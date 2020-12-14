@@ -13,7 +13,7 @@ async def all(event):
     if event.fwd_from:
         return
     await event.delete()
-    mentions = "@all"
+    mentions = "@all HAI"
     chat = await event.get_input_chat()
     async for x in bot.iter_participants(chat, 100):
         mentions += f"[\u2063](tg://user?id={x.id})"
