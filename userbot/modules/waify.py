@@ -6,7 +6,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-
 def progress(current, total):
     logger.info(
         "Downloaded {} of {}\nCompleted {}".format(
