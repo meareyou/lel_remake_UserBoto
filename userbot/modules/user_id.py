@@ -9,18 +9,18 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("`Balas Di Teks Ajg!!`")
+        await event.edit("`Reply pesannya Ajg!!`")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.text:
-        await event.edit("```Balas Di Teks Goblok!!```")
+        await event.edit("```Reply pesannya tolol!!```")
         return
     chat = "@getidsbot"
     reply_message.sender
     if reply_message.sender.bot:
-        await event.edit("`Balas Di Teks Asu!!`")
+        await event.edit("`Ngentood!!`")
         return
-    await event.edit("`Membongkar ID.......`")
+    await event.edit("`JADI CRACKER SEDANG BERJALAN.....`")
     async with bot.conversation(chat) as conv:
         try:
             response = conv.wait_event(
