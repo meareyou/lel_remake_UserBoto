@@ -14,7 +14,7 @@ async def typewriter(typew):
     sleep(1)
     await typew.edit(f"**Hallo Semua Saya {DEFAULTUSER}**")
     sleep(2)
-    await typew.edit("`Assalamualaikum.....`")
+    await typew.edit("`Hae Semua Nya....`")
 # Owner @Si_Dian
 
 
@@ -24,7 +24,7 @@ async def typewriter(typew):
     sleep(1)
     await typew.edit(f"**Hallo Semua Saya {DEFAULTUSER}**")
     sleep(2)
-    await typew.edit("`Assalamualaikum.....`")
+    await typew.edit("`Hae Semua Nya.....`")
 # Owner @Si_Dian
 
 
@@ -32,9 +32,9 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit("`Astaghfirulloh Jawab Salam Dong...`")
+    await typew.edit("`Lah ngatur...`")
     sleep(1)
-    await typew.edit("`Waallaikumsalam......`")
+    await typew.edit("`Hae too.....`")
 # Owner @Si_Dian
 
 
@@ -42,10 +42,10 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit("`Astaghfirulloh Jawab Salam Dong...`")
+    await typew.edit("`Lah ngatur...`")
     sleep(1)
-    await typew.edit("`Waallaikumsalam.....`")
-# Owner @Si_Dian
+    await typew.edit("`Hae too.....`")
+# Owner @Si_Dian ｡.ﾟ+ ⟵(｡･ω･)
 
 
 CMD_HELP.update({
