@@ -98,7 +98,7 @@ def register(**args):
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**USERXBOT ERROR REPORT**\n"
-                    link = "Silahkan chat PM: @X_Newbie"
+                    link = " BACOT DI BOT AJA "
                     text += "Untuk melaporkan kesalahan"
                     text += f"- just forward this message to {link}.\n"
                     text += "Nothing is logged except the fact of error and date\n"
