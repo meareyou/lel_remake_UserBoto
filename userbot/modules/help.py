@@ -20,15 +20,15 @@ async def help(event):
         if args in CMD_HELP:
             await event.edit(str(CMD_HELP[args]))
         else:
-            await event.edit("**Module Salah Goblokkkk!!**")
+            await event.edit("**NGGAK ADA TOLOL**")
             await asyncio.sleep(18)
             await event.delete()
     else:
         await event.edit(f"**╭━━━━━━━━━━━━━━━━━━━━━╮**\
-            \n│   Help for [NONE ---]\
+            \n│   Help for N0N3 --- USERBOT ---\
             \n╰━━━━━━━━━━━━━━━━━━━━━╯ \
             \n╭━━━━━━━━━━━━━━━━━━━━━╮\
-            \n│   Untuk melihat lengkap Command\
+            \n│   Informasi lebih jelas tentang modules\
             \n│   Contoh: .help <nama module>\
             \n│   Modules Aktif: {len(modules)}\
            \n╰━━━━━━━━━━━━━━━━━━━━━╯")
@@ -38,6 +38,6 @@ async def help(event):
             string += "`\t• "
         await event.reply(f"•{string}•"
                           "\n╾─────────────────────╼\
-                          \n   __MOD BY__ :N0N3 Gotcha")
+                          \n   __MOD BY__ : NONE ----")
         await asyncio.sleep(100)
         await event.delete()
