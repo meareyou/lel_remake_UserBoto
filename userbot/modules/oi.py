@@ -6,33 +6,33 @@ from userbot.events import register
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(3)
-    await typew.edit("`Muka kalian Burik...`")
+    await typew.edit("`GW GANTENG..`")
     sleep(3)
-    await typew.edit("`Kayak Jemboot`")
+    await typew.edit("`GW GANTENG BANGET`")
     sleep(1)
-    await typew.edit("`Muka Gw Gak Burik Kek Kalian`")
-# Create by myself @localheart
+    await typew.edit("`GW GANTENG BANGET NYA KEBANGETAN`")
+    # original by @localheart edited by @Crypto08
 
 
 @register(outgoing=True, pattern='^.io(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(3)
-    await typew.edit("`Muka Gue Burik...`")
+    await typew.edit("`GW GANTENG BANGET ...`")
     sleep(3)
-    await typew.edit("`Kayak Jemboot`")
+    await typew.edit("`GW GANTENG BANGET ANJIM`")
     sleep(1)
-    await typew.edit("`Muka Gw Burik Kek Jembott`")
-# Create by myself @localheart
+    await typew.edit("`GW GANTENG LEBIHIN LO`")
+# line 14
 
 
 @register(outgoing=True, pattern='^.ll(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(3)
-    await typew.edit("`Lucinta Luna Berbatang ...`")
+    await typew.edit("`Di tolak buat ngeuue ...`")
     sleep(3)
-    await typew.edit("`Tapi Gua sukaa`")
+    await typew.edit("`Tapi Gua nggak nyesel ❤️😧`")
     sleep(1)
-    await typew.edit("`I love memek Oplass`")
-# Create by myself @localheart
+    await typew.edit("`I love memki`")
+# line 14
