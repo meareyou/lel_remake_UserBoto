@@ -115,7 +115,7 @@ async def update(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    await event.edit('`**XBOT** Berhasil Di Update!`')
+    await event.edit('`**NONE ---** Berhasil Di Update!`')
     await asyncio.sleep(1)
     await event.edit('`XBOT Di Restart....`')
     await asyncio.sleep(1)
@@ -126,7 +126,7 @@ async def update(event, repo, ups_rem, ac_br):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID, "#NOTICE \n"
-            "OK XBOT-REMIX Berhasil Di Update")
+            "OK Bot N0N3 --- Berhasil Di Update")
         await asyncio.sleep(10)
         await event.delete()
 
@@ -188,13 +188,13 @@ async def upstream(event):
 
     if changelog == '' and force_update is False:
         await event.edit(
-            f'\n`🔥XBOT-REMIX🔥\n` sudah **versi terbaru**\n`BRANCH:`**{UPSTREAM_REPO_BRANCH}**\n')
+            f'\n`BOT N0N3 --- \n` sudah **versi terbaru**\n`BRANCH:`**{UPSTREAM_REPO_BRANCH}**\n')
         await asyncio.sleep(15)
         await event.delete()
         return repo.__del__()
 
     if conf is None and force_update is False:
-        changelog_str = f'**UPDATE Terbaru Untuk 🔥XBOT-REMIX🔥 [{ac_br}]:\n\nPERUBAHAN:**\n`{changelog}`'
+        changelog_str = f'**UPDATE Terbaru Untuk this bot  [{ac_br}]:\n\nPERUBAHAN:**\n`{changelog}`'
         if len(changelog_str) > 4096:
             await event.edit("`Changelog is too big, view the file to see it.`")
             file = open("output.txt", "w+")
@@ -214,10 +214,10 @@ async def upstream(event):
         await event.edit(
             '`Force-Syncing to latest stable userbot code, please wait...`')
     else:
-        await event.edit('`Proses Update XBOT-REMIX, ....🛠️`')
-        await event.edit('`Proses Update XBOT-REMIX, loading....🛠️`')
-        await event.edit('`Proses Update XBOT-REMIX, updating....🛠️`')
-        await event.edit('`Proses Update XBOT-REMIX, silahkan tunggu....🛠️`')
+        await event.edit('`Proses Update N0N3 ---, ....🛠️`')
+        await event.edit('`Proses Update N0N3 ---, loading....🛠️`')
+        await event.edit('`Proses Update N0N3 ---, updating....🛠️`')
+        await event.edit('`Proses Update N0N3 ---, silahkan tunggu....🛠️`')
     if conf == "now":
         await update(event, repo, ups_rem, ac_br)
         await asyncio.sleep(10)
