@@ -25,7 +25,7 @@ async def help(event):
             await event.delete()
     else:
         await event.edit(f"**╭━━━━━━━━━━━━━━━━━━━━━╮**\
-            \n│   Help for [🔥XBOT-REMIX🔥]\
+            \n│   Help for [NONE ---]\
             \n╰━━━━━━━━━━━━━━━━━━━━━╯ \
             \n╭━━━━━━━━━━━━━━━━━━━━━╮\
             \n│   Untuk melihat lengkap Command\
@@ -38,6 +38,6 @@ async def help(event):
             string += "`\t• "
         await event.reply(f"•{string}•"
                           "\n╾─────────────────────╼\
-                          \n   __MOD BY__ :➳͜͡❂ঔৣ⃕͜x͠N͜͡ᎬᎳᏴᏆᎬ࿐")
+                          \n   __MOD BY__ :N0N3 Gotcha")
         await asyncio.sleep(100)
         await event.delete()
