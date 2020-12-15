@@ -163,7 +163,7 @@ ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY", "./zips")
 BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
 
 # Bot Name
-TERM_ALIAS = os.environ.get("TERM_ALIAS", "XBOT-REMIX")
+TERM_ALIAS = os.environ.get("TERM_ALIAS", "NONE ---")
 
 # Bot version
 BOT_VER = os.environ.get("BOT_VER", "4.0")
@@ -176,7 +176,7 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # Default .alive logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/099b2bf1c3256847946bf.mp4"
+    "ALIVE_LOGO") or "https://telegra.ph/file/279989e0b2152fc118bf4.mp4"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -414,7 +414,7 @@ with bot:
                     link_preview=True)
             else:
                 result = builder.article(
-                    "XBOT-REMIX",
+                    "NONE ---",
                     text="""You can convert your account to bot and use them. Remember, you can't manage someone else's bot! All installation details are explained from GitHub address below.""",
                     buttons=[
                         [
