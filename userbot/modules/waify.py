@@ -1,13 +1,11 @@
 
-import asyncio
 import os
 from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
-from google_images_download import google_images_download
 
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import friday_on_cmd
 
 
 def progress(current, total):
@@ -51,7 +49,8 @@ async def _(event):
             previous_message_text = previous_message.message
             SEARCH_URL = "{}/searchbyimage?image_url={}"
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
-            google_rs_response = requests.get(request_url, allow_redirects=False)
+            google_rs_response = requests.get(
+                request_url, allow_redirects=False)
             the_location = google_rs_response.headers.get("Location")
         await event.edit("Shinjou sasageyo ! ! !")
         headers = {
@@ -73,4 +72,3 @@ async def _(event):
             **locals()
         )
     await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
-
