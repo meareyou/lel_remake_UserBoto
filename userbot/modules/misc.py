@@ -120,7 +120,7 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     await wannasee.edit(
-        r"[{━─━─[ N0N3 ------  R3P0 ]─━─━}](https://github.com/meareyou/lel_remake_UserBoto)\n", r"\n[\------CLICK FOR  AUTO FORK------/](https://github.com/meareyou/lel_remake_UserBoto/network/members)"
+        "╔╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╦╗\n \n[┣━─━─[ N0N3 - UBot]─━─━┫](https://github.com/meareyou/lel_remake_UserBoto) \n \n[┣━─━─[ AUTO FORK ]─━─━┫](https://github.com/meareyou/lel_remake_UserBoto/network/members)\n \n"
     )
 
 
