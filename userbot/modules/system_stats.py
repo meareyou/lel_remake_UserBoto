@@ -232,7 +232,7 @@ async def amireallyalive(alive):
     user = await bot.get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        f"۝⩵꙰ཱི►XBOT-REMIX◄⩵꙰ཱི۝\n running on 🤖 `{UPSTREAM_REPO_BRANCH}` 🤖\n"
+        f"`N0N3 -----UserBot`\n Running on 🤖 `{UPSTREAM_REPO_BRANCH}` 🤖\n"
         f"╭━━━━━━━━━━━━━━━━━━━━━╮\n"
         f"┣[•👤 `USER     :`{DEFAULTUSER}\n"
         f"┣[ 👁‍🗨 `Username :`@{user.username}\n"
