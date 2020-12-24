@@ -17,7 +17,8 @@ async def typewriter(typew):
     await typew.edit("`Hae Semua Nya....`")
     sleep(30)
     await msg.delete()
-#@Crypto08
+# @Crypto08
+
 
 @register(outgoing=True, pattern='^p(?: |$)(.*)')
 async def typewriter(typew):
