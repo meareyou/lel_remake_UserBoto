@@ -17,8 +17,9 @@ async def typewriter(typew):
     await typew.edit("`Hae Semua Nya....`")
     sleep(30)
     await msg.delete()
-@Crypto08
 
+
+@Crypto08
 @register(outgoing=True, pattern='^p(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
@@ -28,7 +29,8 @@ async def typewriter(typew):
     await typew.edit("`Hae Semua Nya.....`")
     sleep(30)
     await msg.delete()
-#@Crypto08
+# @Crypto08
+
 
 @register(outgoing=True, pattern='^L(?: |$)(.*)')
 async def typewriter(typew):
@@ -39,7 +41,8 @@ async def typewriter(typew):
     await typew.edit("`Hae too.....`")
     sleep(30)
     await msg.delete()
-#@Crypto08
+# @Crypto08
+
 
 @register(outgoing=True, pattern='^l(?: |$)(.*)')
 async def typewriter(typew):
@@ -50,14 +53,15 @@ async def typewriter(typew):
     await typew.edit("`Hae too.....`")
     sleep(30)
     await msg.delete()
-#@Crypto08
+# @Crypto08
+
 
 @register(outgoing=True, pattern='^aa(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
     await typew.edit("`Gawr gura : **AaaaaaaaaaaaaaaaaaA** `")
-#@Crypto08
+# @Crypto08
 
 CMD_HELP.update({
     "GreetinGWra":
