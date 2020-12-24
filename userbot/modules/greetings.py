@@ -60,7 +60,7 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit("`Gawr gura : **AaaaaaaaaaaaaaaaaaA** `")
+    await typew.edit("Gawr gura : **AaaaaaaaaaaaaaaaaaA** ")
 # @Crypto08
 
 CMD_HELP.update({
