@@ -64,7 +64,7 @@ async def typewriter(typew):
 # @Crypto08
 
 CMD_HELP.update({
-    "GreetinGWra":
+    "greetingwra":
     "`P`\
 \nUsage: Untuk Memberi salam.\
 \n\n`L`\
