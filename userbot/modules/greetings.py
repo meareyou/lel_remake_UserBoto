@@ -68,5 +68,6 @@ CMD_HELP.update({
     "`P`\
 \nUsage: Untuk Memberi salam.\
 \n\n`L`\
-\nUsage: Greetings tapi boong ."
+\nUsage: Greetings tapi boong .\
+\n\nUsage : Be Gwra."
 })
