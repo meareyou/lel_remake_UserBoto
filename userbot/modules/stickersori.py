@@ -19,7 +19,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from userbot import CMD_HELP, bot, S_PACK_NAME as custompack
+from userbot import CMD_HELP, bot
 from userbot.events import register
 
 
@@ -100,8 +100,8 @@ async def kang(args):
                 emoji = splat[1]
 
         packname = f"a{user.id}_by_{user.username}_{pack}"
-            packnick = f"@{user.username}'s kang pack Vol.{pack}"
-            cmd = '/newpack'
+        packnick = f"@{user.username}'s kang pack Vol.{pack}"
+        cmd = '/newpack'
         file = io.BytesIO()
 
         if not is_anim:
