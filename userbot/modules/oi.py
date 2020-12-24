@@ -11,7 +11,7 @@ async def typewriter(typew):
     await typew.edit("`Boleh PM Nggak `")
     sleep(1)
     await typew.edit("`Sekalian No WA + IG 😘`")
-# awokwkwowwk 
+# awokwkwowwk
     # original by @localheart edited by @Crypto08
 
 
