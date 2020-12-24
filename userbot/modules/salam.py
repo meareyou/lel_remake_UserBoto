@@ -32,7 +32,7 @@ async def typewriter(typew):
 # Owner @Si_Dian + @Crypto08
 
 
-@register(outgoing=True, pattern='^L(?: |$)(.*)')
+@register(outgoing=True, pattern='^.LL(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
@@ -44,7 +44,7 @@ async def typewriter(typew):
 # Owner @Si_Dian + @Crypto08
 
 
-@register(outgoing=True, pattern='^l(?: |$)(.*)')
+@register(outgoing=True, pattern='^.ll(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
