@@ -1027,7 +1027,7 @@ async def _(event):
     await event.edit("succesfully reverted to your account back")
 
 CMD_HELP.update({
-    "remixmisc":
+    "mixmisc":
     "`.app`\
 \nUsage: type .app name and get app details.\
 \n\n`.undlt`\
