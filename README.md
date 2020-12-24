@@ -28,6 +28,8 @@
   > First get API_KE & API_HASH in my.telegram.org (required)
 
   > Get String Session on command below run in your terminal (required)
+  
+  > Or some shell file 
 
   > Next click Deploy the button below. 
 
@@ -62,6 +64,6 @@
 *   AND OTHER
 
 ## License
-Licensed under [Raphielscape Public License](https://github.com/meareyou/lel_remake_UseBoto/blob/x-sql-extended/LICENSE) - Version 1.d, February 2020
+Licensed under [Raphielscape Public License](https://github.com/meareyou/lel_remake_UserBoto/blob/x-sql-extended/LICENSE) - Version 1.d, February 2020
 
 <p align="center"><a href="https://t.me/Crypto08"> <img src="https://img.shields.io/badge/Sang%20Editod%20Berkentod-blue?style=flat&logo=telegram" width="310" height="34.45" /></a></p>
