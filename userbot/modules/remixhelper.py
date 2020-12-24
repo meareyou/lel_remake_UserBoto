@@ -8,7 +8,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 # ============================================
 
 
-@register(outgoing=True, pattern="^.remixhelp$")
+@register(outgoing=True, pattern="^.mehelp$")
 async def usit(e):
     await e.edit(
         f"Here's something for {DEFAULTUSER} to use it for help_on_update on **NONE ---**:\n"
@@ -20,7 +20,7 @@ async def usit(e):
         "\n[video-tutorial](https://youtu.be/us1O-AnWmHA)")
 
 
-@register(outgoing=True, pattern="^.remixvar$")
+@register(outgoing=True, pattern="^.mevar$")
 async def var(m):
     await m.edit(
         f"Here's a list of VARS for {DEFAULTUSER} on **NONE ---**:\n"
@@ -28,9 +28,9 @@ async def var(m):
 
 
 CMD_HELP.update({
-    "remixhelper":
-    "`.remixhelp`\
+    "helper":
+    "`.mehelp`\
 \nUsage: Provide links to update repo guides while you keep your changes on the floor.\
-\n`.remixvar`\
+\n`.mevar`\
 \nUsage: Provide vars to cross check for you."
 })
