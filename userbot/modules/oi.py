@@ -6,11 +6,12 @@ from userbot.events import register
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(3)
-    await typew.edit("`GW GANTENG..`")
+    await typew.edit("`Hai Cantik..`")
     sleep(3)
-    await typew.edit("`GW GANTENG BANGET`")
+    await typew.edit("`Boleh PM Nggak `")
     sleep(1)
-    await typew.edit("`GW GANTENG BANGET NYA KEBANGETAN`")
+    await typew.edit("`Sekalian No WA + IG 😘`")
+# awokwkwowwk 
     # original by @localheart edited by @Crypto08
 
 
@@ -26,7 +27,7 @@ async def typewriter(typew):
 # line 14
 
 
-@register(outgoing=True, pattern='^.ll(?: |$)(.*)')
+@register(outgoing=True, pattern='^.lll(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(3)
