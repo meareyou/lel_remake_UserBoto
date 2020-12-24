@@ -245,7 +245,7 @@ async def amireallyalive(alive):
         f"┣[•🕒 `Uptime   :`{uptime} 🔥\n"
         f"╰━━━━━━━━━━━━━━━━━━━━━╯\n"
         f" •MOD BY : `{DEFAULTUSER}`")
-        f" • REPO  : [🛑🔞 Here 🔞🛑](https://github.com/meareyou/lel_remake_UserBoto)"
+    f" • REPO  : [🛑🔞 Here 🔞🛑](https://github.com/meareyou/lel_remake_UserBoto)"
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
