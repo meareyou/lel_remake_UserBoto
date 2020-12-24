@@ -12,9 +12,9 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit(f"**Hallo Semua Saya {DEFAULTUSER}**")
+    await typew.edit(f"**Hallo Semua Saya {DEFAULTUSER} Mengucapkan**")
     sleep(2)
-    await typew.edit("`Hae Semua Nya....`")
+    await typew.edit("`Assalamualaikum.....`")
 # Owner @Si_Dian
 
 
@@ -22,9 +22,9 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit(f"**Hallo Semua Saya {DEFAULTUSER}**")
+    await typew.edit(f"**Hallo Semua Saya {DEFAULTUSER} Mengucapkan**")
     sleep(2)
-    await typew.edit("`Hae Semua Nya.....`")
+    await typew.edit("`Assalamualaikum.....`")
 # Owner @Si_Dian
 
 
@@ -32,9 +32,9 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit("`Lah ngatur...`")
+    await typew.edit("`Astaghfirulloh Jawab Salam Dong...`")
     sleep(1)
-    await typew.edit("`Hae too.....`")
+    await typew.edit("`Waallaikumsalam......`")
 # Owner @Si_Dian
 
 
@@ -42,10 +42,10 @@ async def typewriter(typew):
 async def typewriter(typew):
     typew.pattern_match.group(1)
     sleep(1)
-    await typew.edit("`Lah ngatur...`")
+    await typew.edit("`Astaghfirulloh Jawab Salam Dong...`")
     sleep(1)
-    await typew.edit("`Hae too.....`")
-# Owner @Si_Dian ｡.ﾟ+ ⟵(｡･ω･)
+    await typew.edit("`Waallaikumsalam.....`")
+# Owner @Si_Dian
 
 
 CMD_HELP.update({
