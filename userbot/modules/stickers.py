@@ -4,6 +4,11 @@
 # you may not use this file except in compliance with the License.
 #
 
+from telethon.tl.types import DocumentAttributeSticker
+from telethon.tl.types import InputStickerSetID
+from userbot.events import register, errors_handler
+from userbot import bot, CMD_HELP
+from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
 import io
 import math
 import random
@@ -42,7 +47,8 @@ async def kang(args):
     user = await bot.get_me()
     if not user.username:
         user.username = user.first_name
-    message = await args.get_reply_message()# Copyright (C) 2019 The Raphielscape Company LLC.
+    # Copyright (C) 2019 The Raphielscape Company LLC.
+    message = await args.get_reply_message()
 #
 # Licensed under the Raphielscape Public License, Version 1.b (the "License");
 # you may not use this file except in compliance with the License.
@@ -50,18 +56,6 @@ async def kang(args):
 
 """ Userbot module for kanging stickers or making new ones. Thanks @rupansh"""
 
-import io
-import math
-import urllib.request
-from os import remove
-from PIL import Image
-import random
-from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
-from userbot import bot, CMD_HELP
-from userbot.events import register, errors_handler
-from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import InputStickerSetID
-from telethon.tl.types import DocumentAttributeSticker
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
@@ -72,6 +66,7 @@ KANGING_STR = [
     "hehe me stel ur stikér\nhehe.",
     "Ay look over there (☉｡☉)!→\nWhile I kang this...",
 ]
+
 
 @register(outgoing=True, pattern="^.kang")
 @errors_handler
@@ -304,42 +299,44 @@ async def resize_photo(photo):
 
     return image
 
+
 @register(outgoing=True, pattern="^.stkrinfo$")
 async def get_pack_info(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in (
+            "/", "#", "@", "!"):
         if not event.is_reply:
             await event.edit("`Reply to a sticker to get the pack details`")
             return
-        
+
         rep_msg = await event.get_reply_message()
         if not rep_msg.document:
             await event.edit("`Reply to a sticker to get the pack details`")
             return
-        
+
         try:
             stickerset_attr = rep_msg.document.attributes[1]
             await event.edit("`Fetching details of the sticker pack, please wait..`")
-        except:
+        except BaseException:
             await event.edit("`This is not a sticker. Reply to a sticker.`")
             return
-        
+
         if not isinstance(stickerset_attr, DocumentAttributeSticker):
             await event.edit("`This is not a sticker. Reply to a sticker.`")
             return
-        
+
         get_stickerset = await bot(GetStickerSetRequest(InputStickerSetID(id=stickerset_attr.stickerset.id, access_hash=stickerset_attr.stickerset.access_hash)))
         pack_emojis = []
         for document_sticker in get_stickerset.packs:
             if document_sticker.emoticon not in pack_emojis:
                 pack_emojis.append(document_sticker.emoticon)
-                
+
         OUTPUT = f"**Sticker Title:** `{get_stickerset.set.title}\n`" \
-                f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n" \
-                f"**Official:** `{get_stickerset.set.official}`\n" \
-                f"**Archived:** `{get_stickerset.set.archived}`\n" \
-                f"**Stickers In Pack:** `{len(get_stickerset.packs)}`\n" \
-                f"**Emojis In Pack:**\n{' '.join(pack_emojis)}"
-        
+            f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n" \
+            f"**Official:** `{get_stickerset.set.official}`\n" \
+            f"**Archived:** `{get_stickerset.set.archived}`\n" \
+            f"**Stickers In Pack:** `{len(get_stickerset.packs)}`\n" \
+        f"**Emojis In Pack:**\n{' '.join(pack_emojis)}"
+
         await event.edit(OUTPUT)
 
 CMD_HELP.update({
@@ -354,12 +351,12 @@ CMD_HELP.update({
 \n\n.stkrinfo\
 \nUsage: Gets info about the sticker pack."
 })
-    photo = None
-    emojibypass = False
-    is_anim = False
-    emoji = None
+photo = None
+emojibypass = False
+ is_anim = False
+  emoji = None
 
-    if message and message.media:
+   if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
