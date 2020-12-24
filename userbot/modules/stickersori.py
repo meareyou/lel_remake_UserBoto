@@ -19,11 +19,18 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP, bot, S_PACK_NAME as custompack
 from userbot.events import register
 
 
 KANGING_STR = [
+    "Using Witchery to kang this sticker...",
+    "Plagiarising hehe...",
+    "Inviting this sticker over to my pack...",
+    "Kanging this sticker...",
+    "Hey that's a nice sticker!\nMind if I kang?...",
+    "hehe me stel ur stikér\nhehe.",
+    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
     "Wao.,Bagus Nih...Colong Dulu Yekan..",
     "Colong Sticker dulu yee kan",
     "ehh, mantep nih.....aku colong ya...",
@@ -100,8 +107,8 @@ async def kang(args):
                 emoji = splat[1]
 
         packname = f"a{user.id}_by_{user.username}_{pack}"
-        packnick = f"@{user.username}'s kang pack Vol.{pack}"
-        cmd = '/newpack'
+            packnick = f"@{user.username}'s kang pack Vol.{pack}"
+            cmd = '/newpack'
         file = io.BytesIO()
 
         if not is_anim:
