@@ -23,9 +23,11 @@
 ## How To Deploy 👷
 
 ```
-Termux Method
-pkg install wget;wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/String-Termux.sh
-sh/bash String-Termux.sh
+Termux Method [ JUST COPY COMMAND BELLOW ]
+```
+
+```
+pkg install wget;wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/String-Termux.sh;sh String-Termux.sh
 ```
 
 ```
