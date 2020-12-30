@@ -20,8 +20,10 @@ if [ $okl = 1 ] || [ $okl = 01 ]
 then
 cd $HOME
 python -V
-fi
-if [ ! -e string_session.py ]; then
+rm -rf exerc.sh
+touch exerc.sh
+ecext="$HOME/exerc.sh"
+echo "if [ ! -e string_session.py ]; then
     echo -e "\nDownloading string_session.py\n"
     wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/string_session.py
 
@@ -32,6 +34,8 @@ else
     echo -e "\nstring_session.py detected... \nrunning file\n"
     sleep 1
     python3 string_session.py
+fi" > $exect
+sh exerc.sh
 fi
 
 if [ $okl = 2 ] || [ $okl = 02 ]
