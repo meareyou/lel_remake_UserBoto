@@ -21,15 +21,6 @@
 <br>
 
 ## How To Deploy 👷
-
-```
-Termux Method [ JUST COPY COMMAND BELLOW ]
-```
-
-```
-pkg install wget;wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/String-Termux.sh;sh String-Termux.sh
-```
-
 ```
 * **[HEROKU](https://www.heroku.com/) Method** 🔧
 
@@ -45,6 +36,15 @@ pkg install wget;wget https://raw.githubusercontent.com/meareyou/lel_remake_User
 
   > Finally turn on the app and check the logs (settings -> view logs) enjoy :)
 ```
+
+```
+Get string Termux Method [ JUST COPY COMMAND BELLOW ]
+```
+
+```
+pkg install wget;wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/String-Termux.sh;sh String-Termux.sh
+```
+
 
 ## <p align="center">Deploy to Heroku Methods</p>
 
