@@ -20,7 +20,18 @@ if [ $okl = 1 ] || [ $okl = 01 ]
 then
 cd $HOME
 python -V
-wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/string_session.py;python3 string_session.py
+fi
+if [ ! -e string_session.py ]; then
+    echo -e "\nDownloading string_session.py\n"
+    wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/string_session.py
+
+    echo -e "\nRunning script...\n"
+    sleep 1
+    python3 string_session.py
+else
+    echo -e "\nstring_session.py detected... \nrunning file\n"
+    sleep 1
+    python3 string_session.py
 fi
 
 if [ $okl = 2 ] || [ $okl = 02 ]
