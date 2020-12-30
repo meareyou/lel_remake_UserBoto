@@ -7,35 +7,32 @@ cyan='\033[36;1m'
 red='\033[31;1m'
 white='\033[37;1m'
 yellow='\033[33;1m'
-pkg install man
-pkg install neofetch
+gg=$([ ! -e string_session.py ])
+HOME='/data/data/com.termux/files/home'
 clear
 neofetch
 echo "\n""\n""\n$green$time"
 echo $blue "\n1. Get String File "$green "\n2. Install Kebutuhan "$yellow "\n3. Clear File "$red "\n00. Cancel "
 
-read -p "????????? : " ok
+read -p "????????? : " okl
+
 
 if [ $okl = 1 ] || [ $okl = 01 ]
 then
 cd $HOME
 python -V
-rm -rf exerc.sh
-touch exerc.sh
-ecext="$HOME/exerc.sh"
-echo "if [ ! -e string_session.py ]; then
-    echo -e "\nDownloading string_session.py\n"
+if [ ! -e string_session.py ]; then
+    echo  "\nDownloading string_session.py\n"
     wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/string_session.py
 
-    echo -e "\nRunning script...\n"
+    echo "\nRunning script...\n"
     sleep 1
     python3 string_session.py
 else
-    echo -e "\nstring_session.py detected... \nrunning file\n"
+    echo  "\nstring_session.py detected... \nrunning existing file\n"
     sleep 1
     python3 string_session.py
-fi" > $exect
-sh exerc.sh
+fi
 fi
 
 if [ $okl = 2 ] || [ $okl = 02 ]
@@ -56,5 +53,3 @@ then
 cd $HOME
 clear
 fi
-
-clear
