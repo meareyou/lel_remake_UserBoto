@@ -63,9 +63,10 @@ pyDownload
 beautifulsoup4>=4.8.1
 PyGithub
 bs4
+colorama
 covid
 base
-pip>19.3.4
+pip>19.3.3
 setuptools>=28.8.0
 selenium>=3.141.0 
 # SpeechRecognition
