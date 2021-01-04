@@ -8,7 +8,7 @@ async def _(event):
     if event.fwd_from:
         return
         chat = "@telkomsel_official_bot"
-    now = f"/now"
+    now = f"cek kuota"
     await event.edit("`Processing...`")
     async with event.client.conversation(chat) as conv:
         try:
@@ -24,3 +24,9 @@ async def _(event):
             return
         else:
             await event.edit(f"{response.message.message}")
+
+CMD_HELP.update({
+    "telkomsel":
+    "`.tlkmsl`"
+    "\nUsage: Cek Kuota."
+})
