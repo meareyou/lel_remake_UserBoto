@@ -155,7 +155,7 @@
     },
     "ALIVE_NAME": {
       "description": "Name to show in .alive message",
-      "required": false
+      "required": true
     },
     "S_PACK_NAME": {
       "description": "change your sticker pack name",
