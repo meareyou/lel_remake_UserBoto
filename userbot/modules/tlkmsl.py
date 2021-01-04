@@ -5,8 +5,7 @@ from userbot import bot, CMD_HELP
 
 @register(outgoing=True, pattern=r"^\.tlkmsl(?: |$)(.*)")
 async def _(event):
-    if event.fwd_from:
-        return
+
         chat = "@telkomsel_official_bot"
     now = f"cek kuota"
     await event.edit("`Processing...`")
