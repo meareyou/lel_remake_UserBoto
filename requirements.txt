@@ -65,7 +65,7 @@ PyGithub
 bs4
 covid
 base
-pip>20.3.3
+pip>19.3.4
 setuptools>=28.8.0
 selenium>=3.141.0 
 # SpeechRecognition
