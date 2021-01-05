@@ -41,11 +41,15 @@ pkg install python -y
 pkg install wget -y
 cd $HOME;wget https://raw.githubusercontent.com/meareyou/ezrequ/main/requirements.txt
 pip install -r requirements.txt
+clear
 fi
 
 if [ $okl = 3 ] || [ $okl = 03 ]
 then
+echo "Clearing not used files"
+sleep 2
 cd $HOME;rm -rf requirements.txt;rm -rf string_session.py
+clear
 fi
 
 if [ $okl = 0 ] || [ $okl = 00 ]
