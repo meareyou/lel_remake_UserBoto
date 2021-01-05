@@ -1,11 +1,14 @@
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.events import register
 from userbot import bot, CMD_HELP
-
+import os
+from time import sleep
+from telethon import events
 
 @register(outgoing=True, pattern=r"^\.tlkmsl(?: |$)(.*)")
 async def _(event):
-
+    if event.fwd_from:
+        return
         chat = "@telkomsel_official_bot"
     now = f"cek kuota"
     await event.edit("`Processing...`")
