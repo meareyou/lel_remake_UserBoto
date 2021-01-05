@@ -7,15 +7,19 @@ from userbot import bot, CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-        chat = "@telkomsel_official_bot"
+    chat = "@telkomsel_official_bot"
     now = f"cek kuota"
     await event.edit("`Processing...`")
     async with event.client.conversation(chat) as conv:
-        try:
-            await conv.send_message(now)
-            response = await conv.get_response()
-            """ - don't spam notif - """
-            await bot.send_read_acknowledge(conv.chat_id)
+        try:            
+            response = conv.wait_event(
+                events.NewMessage(
+                    incoming=True,
+                    from_users=266446332))
+            await bot.send_message(chat, now)
+            response = await response          
+            """ - don't spam notif - """            
+            response = await conv.get_response()                      
         except YouBlockedUserError:
             await event.reply("`Please unblock the Bot `@telkomsel_official_bot`")
             return
