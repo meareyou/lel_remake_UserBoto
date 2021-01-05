@@ -1,9 +1,7 @@
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.events import register
 from userbot import bot, CMD_HELP
-import os
-from time import sleep
-from telethon import events
+
 
 @register(outgoing=True, pattern=r"^\.tlkmsl(?: |$)(.*)")
 async def _(event):
