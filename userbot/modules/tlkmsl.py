@@ -24,14 +24,13 @@ async def _(event):
             return
         if response.text.startswith("Agar"):
             await event.edit("`Please cek bot and complete your identity`")
-            return
-       if response.text.startswith("Berikut"):
-            await event.delete()
-            await bot.send_message(chat, ya) 
-            await bot.send_message(event.chat_id, response.message)
-            return
+            return       
         else
+          await event.delete()                     
+          await bot.send_message(ya)
+          await conv.get_response() 
           await event.edit(f"{response.message.message}")
+
 CMD_HELP.update({
     "telkomsel":
     "`.tlkmsl`"
