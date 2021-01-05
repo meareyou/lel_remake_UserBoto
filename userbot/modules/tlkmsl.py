@@ -25,8 +25,7 @@ async def _(event):
         if response.text.startswith("Agar"):
             await event.edit("`Please cek bot and complete your identity`")
             return
-        else:
-        await event.delete()
+        else:        
         await bot.send_message(chat, conf)
         await conv.get_response()
         await event.edit(f"{response.message.message}")
