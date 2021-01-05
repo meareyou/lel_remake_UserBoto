@@ -50,10 +50,12 @@ echo "Clearing not used files"
 sleep 2
 cd $HOME;rm -rf requirements.txt;rm -rf string_session.py
 clear
+logout
 fi
 
 if [ $okl = 0 ] || [ $okl = 00 ]
 then
 cd $HOME
 clear
+logout
 fi
