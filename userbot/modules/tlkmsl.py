@@ -9,7 +9,7 @@ async def _(event):
         return
     chat = "@telkomsel_official_bot"
     now = f"cek kuota"
-    ya = f"Ya"
+    conf = f"Ya"
     await event.edit("`Processing...`")
     async with bot.conversation(chat) as conv:
         try:
@@ -27,7 +27,7 @@ async def _(event):
             return
         else:
         await event.delete()
-        await bot.send_message(ya)
+        await bot.send_message(chat, conf)
         await conv.get_response()
         await event.edit(f"{response.message.message}")
 
