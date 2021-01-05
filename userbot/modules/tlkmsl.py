@@ -11,15 +11,15 @@ async def _(event):
     now = f"cek kuota"
     await event.edit("`Processing...`")
     async with event.client.conversation(chat) as conv:
-        try:            
+        try:
             response = conv.wait_event(
                 events.NewMessage(
                     incoming=True,
                     from_users=266446332))
             await bot.send_message(chat, now)
-            response = await response          
-            """ - don't spam notif - """            
-            response = await conv.get_response()                      
+            response = await response
+            """ - don't spam notif - """
+            response = await conv.get_response()
         except YouBlockedUserError:
             await event.reply("`Please unblock the Bot `@telkomsel_official_bot`")
             return
