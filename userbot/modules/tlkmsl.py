@@ -18,13 +18,13 @@ async def _(event):
                     incoming=True,
                     from_users=266446332))
             await bot.send_message(chat, now)
-            response = await response           
+            response = await response
         except YouBlockedUserError:
             await event.reply("`Please unblock the Bot `@telkomsel_official_bot`")
             return
         if response.text.startswith("Agar"):
             await event.edit("`Please cek bot and complete your identity`")
-            return              
+            return
            else:
             await event.delete()
             await bot.send_message(chat, ya) 
