@@ -29,6 +29,7 @@ async def _(event):
             await event.delete()
             await bot.send_message(chat, ya) 
             await bot.send_message(event.chat_id, response.message)
+            return
         else
           await event.edit(f"{response.message.message}")
 CMD_HELP.update({
