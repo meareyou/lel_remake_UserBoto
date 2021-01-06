@@ -137,7 +137,7 @@ async def promote(promt):
     await promt.edit("`Promoting... please wait`")
     user, rank = await get_user_from_event(promt)
     if not rank:
-        rank = "Admeme"  # Just in case.
+        rank = "? ?"  # Just in case.
     if not user:
         return
 
@@ -175,7 +175,7 @@ async def demote(dmod):
 
     # If passing, declare that we're going to demote
     await dmod.edit("`Demoting...`")
-    rank = "admeme"  # dummy rank, lol.
+    rank = "Kek"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
     if not user:
