@@ -79,6 +79,6 @@ CMD_HELP.update({
     "telkomsel":
     ">`.tlkmsl `"
     "\nUsage: Cek kuota when you don't have session number."
-    "\n`.tlkmls `"
+    "\n>`.tlkmls `"
     "\nUsage: Cek kuota when you already have session number"
 })
