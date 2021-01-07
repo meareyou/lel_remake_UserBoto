@@ -4,7 +4,9 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot import bot
 from userbot.events import register
 
-#response 1
+# response 1
+
+
 @register(outgoing=True, pattern=r"^\.tlkmsl")
 async def _(event):
     if event.fwd_from:
@@ -35,13 +37,15 @@ async def _(event):
             await bot.send_read_acknowledge(conv.chat_id)
             await event.client.send_message(event.chat_id, response.message)
 
-#response 2
-@register(outgoing=True, pattern="^\.tlkmls")
+# response 2
+
+
+@register(outgoing=True, pattern=r"^\.tlkmls")
 async def _(event):
     if event.fwd_from:
         return
-    chat = "@telkomsel_official_bot"   
-    now = "cek kuota" 
+    chat = "@telkomsel_official_bot"
+    now = "cek kuota"
     await event.edit("Processing..")
     async with event.client.conversation(chat) as conv:
         try:
@@ -49,7 +53,7 @@ async def _(event):
                 events.NewMessage(
                     incoming=True,
                     from_users=266446332))
-            await bot.send_message(chat, now)          
+            await bot.send_message(chat, now)
             response = await response
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
