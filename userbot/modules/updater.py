@@ -98,7 +98,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID, "#NOTE \n"
-                "OK XBOT-REMIX Berhasil Di Update")
+                "OK N0N3 -- UserBot Berhasil Di Update")
 
     else:
         await event.edit('`[HEROKU]:'
@@ -117,7 +117,7 @@ async def update(event, repo, ups_rem, ac_br):
     await update_requirements()
     await event.edit('`**NONE ---** Berhasil Di Update!`')
     await asyncio.sleep(1)
-    await event.edit('`XBOT Di Restart....`')
+    await event.edit('`N0N3 Di Restart....`')
     await asyncio.sleep(1)
     await event.edit('`Silahkan Tunggu Beberapa Detik!`')
     await asyncio.sleep(10)
