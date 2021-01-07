@@ -105,10 +105,9 @@ async def _(event):
             await bot.send_message(chat, agere)
             await bot.send_read_acknowledge(conv.chat_id)
             """ - don't spam notif - """
-            sleep(3)
-            await event.delete()
-            await bot.send_read_acknowledge(conv.chat_id)
-            await event.client.send_message(event.chat_id, response.message)
+                 conv.get_response()
+                 await bot.send_read_acknowledge(conv.chat_id)
+                 await event.client.send_message(event.chat_id, response.message)            
             return
         else:
             await event.delete()
