@@ -1,14 +1,15 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from userbot import bot, CMD_HELP
+from userbot import bot
 from userbot.events import register
 
-@register(outgoing=True, pattern="^\.tlkmsl")
+
+@register(outgoing=True, pattern=r"^\.tlkmsl")
 async def _(event):
     if event.fwd_from:
         return
-    chat = "@telkomsel_official_bot"   
-    now = "cek kuota" 
+    chat = "@telkomsel_official_bot"
+    now = "cek kuota"
     await event.edit("Processing..")
     async with event.client.conversation(chat) as conv:
         try:
@@ -16,7 +17,7 @@ async def _(event):
                 events.NewMessage(
                     incoming=True,
                     from_users=266446332))
-            await bot.send_message(chat, now)          
+            await bot.send_message(chat, now)
             response = await response
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
