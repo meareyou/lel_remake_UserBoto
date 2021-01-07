@@ -1,3 +1,4 @@
+from time import sleep
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot import bot
@@ -19,6 +20,7 @@ async def _(event):
                 events.NewMessage(
                     incoming=True,
                     from_users=266446332))
+            sleep(3)
             await bot.send_message(chat, agere)
             response = await response
             """ - don't spam notif - """
