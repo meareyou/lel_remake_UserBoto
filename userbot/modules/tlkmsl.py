@@ -101,13 +101,15 @@ async def _(event):
             return
         if response.text.startswith("Untuk"):
             await event.edit("Please cek bot and complete your identity")
-        if response.text.startswith("Sebelum"):
+        if response.text.startswith("Sebelum"):          
             await bot.send_message(chat, agere)
             await bot.send_read_acknowledge(conv.chat_id)
             """ - don't spam notif - """
-            await event.delete()
-            await bot.send_read_acknowledge(conv.chat_id)
-            await event.client.send_message(event.chat_id, response.message)
+            x = await conv.get_response()
+                while "120" in x.text:
+                   await event.delete()
+                   await bot.send_read_acknowledge(conv.chat_id)
+                   await event.client.send_message(event.chat_id, response.message)
             return
         else:
             await event.delete()
