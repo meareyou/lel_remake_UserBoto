@@ -10,14 +10,16 @@ async def _(event):
         return
     chat = "@telkomsel_official_bot"
     now = "cek kuota"
+    agere = "Ya"
     await event.edit("Processing..")
     async with event.client.conversation(chat) as conv:
         try:
+            await bot.send_message(chat, now)
             response = conv.wait_event(
                 events.NewMessage(
                     incoming=True,
                     from_users=266446332))
-            await bot.send_message(chat, now)
+            await bot.send_message(chat, agere)
             response = await response
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
