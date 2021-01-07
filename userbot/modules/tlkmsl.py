@@ -38,7 +38,8 @@ async def _(event):
         else:
             await event.delete()
             await bot.send_read_acknowledge(conv.chat_id)
-            await event.client.send_message(event.chat_id, response.message) #FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+            # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+            await event.client.send_message(event.chat_id, response.message)
 # response 2
 
 
@@ -70,7 +71,8 @@ async def _(event):
         else:
             await event.delete()
             await bot.send_read_acknowledge(conv.chat_id)
-            await event.client.send_message(event.chat_id, response.message) #FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+            # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+            await event.client.send_message(event.chat_id, response.message)
 
 CMD_HELP.update({
     "telkomsel":
