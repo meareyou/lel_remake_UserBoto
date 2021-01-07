@@ -14,9 +14,12 @@ async def _(event):
     chat = "@telkomsel_official_bot"
     now = "cek kuota"
     agere = "Ya"
+    tart = "/start"
     await event.edit("Processing..")
     async with event.client.conversation(chat) as conv:
         try:
+            await bot.send_message(chat, tart)
+            sleep(3)
             await bot.send_message(chat, now)
             response = conv.wait_event(
                 events.NewMessage(
@@ -35,8 +38,7 @@ async def _(event):
         else:
             await event.delete()
             await bot.send_read_acknowledge(conv.chat_id)
-            await event.client.send_message(event.chat_id, response.message)
-
+            await event.client.send_message(event.chat_id, response.message) #FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
 # response 2
 
 
@@ -46,9 +48,12 @@ async def _(event):
         return
     chat = "@telkomsel_official_bot"
     now = "cek kuota"
+    tart = "/start"
     await event.edit("Processing..")
     async with event.client.conversation(chat) as conv:
         try:
+            await bot.send_message(chat, tart)
+            sleep(3)
             response = conv.wait_event(
                 events.NewMessage(
                     incoming=True,
@@ -65,4 +70,12 @@ async def _(event):
         else:
             await event.delete()
             await bot.send_read_acknowledge(conv.chat_id)
-            await event.client.send_message(event.chat_id, response.message)
+            await event.client.send_message(event.chat_id, response.message) #FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+
+CMD_HELP.update({
+    "telkomsel":
+    ">`.tlkmsl `"
+    "\nUsage: Cek kuota when you don't have session number."
+    "\n`.tlkmls `"
+    "\nUsage: Cek kuota when you already have session number"
+})
