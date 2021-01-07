@@ -75,7 +75,8 @@ async def _(event):
             # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
             await event.client.send_message(event.chat_id, response.message)
 
-#response 3
+# response 3
+
 
 @register(outgoing=True, pattern=r"^\.tselk")
 async def _(event):
@@ -86,27 +87,27 @@ async def _(event):
     agere = "Ya"
     await event.edit("Processing..")
     async with event.client.conversation(chat) as conv:
-        try:            
+        try:
             response = conv.wait_event(
                 events.NewMessage(
                     incoming=True,
-                    from_users=266446332))            
+                    from_users=266446332))
             await bot.send_message(chat, now)
-            response = await response            
+            response = await response
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await event.reply("unblock me (@telkomsel_official_bot) and try again")
             return
         if response.text.startswith("Untuk"):
-            await event.edit("Please cek bot and complete your identity")       
-        if response.text.startswith("Sebelum"):          
+            await event.edit("Please cek bot and complete your identity")
+        if response.text.startswith("Sebelum"):
             await bot.send_message(chat, agere)
             await bot.send_read_acknowledge(conv.chat_id)
             """ - don't spam notif - """
-                   await event.delete()
-                   await bot.send_read_acknowledge(conv.chat_id)
-                   await event.client.send_message(event.chat_id, response.message)
+            await event.delete()
+            await bot.send_read_acknowledge(conv.chat_id)
+            await event.client.send_message(event.chat_id, response.message)
             return
         else:
             await event.delete()
