@@ -12,21 +12,11 @@ from speedtest import Speedtest
 from userbot import CMD_HELP, StartTime
 from userbot.events import register
 import time
-import asyncio
-from asyncio import create_subprocess_exec as asyncrunapp
-from asyncio.subprocess import PIPE as asyncPIPE
-from platform import python_version, uname
-from shutil import which
-from os import remove
-from telethon import version
-from telethon import __version__, version
-import platform
-import sys
+from platform import uname
 import time
 from datetime import datetime
-import psutil
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, BOT_VER, CMD_HELP, StartTime, UPSTREAM_REPO_BRANCH, bot
+from userbot import ALIVE_NAME, CMD_HELP, StartTime
 from userbot.events import register
 
 
@@ -108,7 +98,7 @@ async def pingme(pong):
     start = datetime.now()
     await pong.edit("`Pinging....`")
     end = datetime.now()
-    duration = (end - start).microseconds / 1000
+    (end - start).microseconds / 1000
     await pong.edit(f"**PONG!! 🍭**\n**Pinger** : %sms\n**Bot Uptime** : {uptime}🕛 % (duration)\n**By User** : `{DEFAULTUSER}` / `@{user.username}`")
 
 
