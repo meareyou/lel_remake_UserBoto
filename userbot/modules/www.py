@@ -9,13 +9,9 @@
 from datetime import datetime
 
 from speedtest import Speedtest
-from userbot import CMD_HELP, StartTime, ALIVE_NAME
+from userbot import CMD_HELP, StartTime
 from userbot.events import register
 import time
-
-# ================= CONSTANT =================
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME
-# ============================================
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -91,8 +87,8 @@ async def pingme(pong):
     start = datetime.now()
     await pong.edit("`Pinging....`")
     end = datetime.now()
-    (end - start).microseconds / 1000
-    await pong.edit(f"**PONG!! 🍭**\n**Pinger** : %sms\n**Bot Uptime** : {uptime}🕛 % (duration)\n**By User** : `{DEFAULTUSER}`")
+    duration = (end - start).microseconds / 1000
+    await pong.edit(f"**PONG!! 🍭**\n**Pinger** : %sms\n**Bot Uptime** : {uptime}🕛" % (duration))
 
 
 @register(outgoing=True, pattern="^.pong$")
