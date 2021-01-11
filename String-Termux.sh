@@ -12,7 +12,7 @@ HOME='/data/data/com.termux/files/home'
 clear
 neofetch
 echo "\n""\n""\n$green$time"
-echo $blue "\n1. Get String File "$green "\n2. Install Kebutuhan "$yellow "\n3. Clear File "$red "\n00. Cancel "
+echo $blue "\n1. Get String File for User""\n2. Get String File for Bot"$green "\n3. Install Kebutuhan "$yellow "\n4. Clear File "$red "\n00. Cancel "
 
 read -p "????????? : " okl
 
@@ -37,6 +37,24 @@ fi
 
 if [ $okl = 2 ] || [ $okl = 02 ]
 then
+cd $HOME
+python -V
+if [ ! -e string_support_bot.py ]; then
+    echo  "\nDownloading string_session.py\n"
+    wget https://raw.githubusercontent.com/meareyou/lel_remake_UserBoto/x-sql-extended/string_support_bot.py
+
+    echo "\nRunning script...\n"
+    sleep 1
+    python3 string_support_bot.py
+else
+    echo  "\nstring_support_bot.py detected... \nrunning existing file\n"
+    sleep 1
+    python3 string_support_bot.py
+fi
+fi
+
+if [ $okl = 3 ] || [ $okl = 03 ]
+then
 pkg install python -y
 pkg install wget -y
 cd $HOME;wget https://raw.githubusercontent.com/meareyou/ezrequ/main/requirements.txt
@@ -44,7 +62,7 @@ pip install -r requirements.txt
 clear
 fi
 
-if [ $okl = 3 ] || [ $okl = 03 ]
+if [ $okl = 4 ] || [ $okl = 04 ]
 then
 echo "Clearing not used files"
 sleep 2
