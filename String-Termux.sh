@@ -66,7 +66,7 @@ if [ $okl = 4 ] || [ $okl = 04 ]
 then
 echo "Clearing not used files"
 sleep 2
-cd $HOME;rm -rf requirements.txt;rm -rf string_session.py
+cd $HOME;rm -rf requirements.txt;rm -rf string_session.py;rm -rf string_support_bot.py
 clear
 logout
 fi
