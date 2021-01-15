@@ -29,7 +29,7 @@ async def _(event):
             r_from_id = r.from_id
         await bot.send_message(
             G_BAN_LOGGER_GROUP,
-            "/gban [user](tg://user?id={}) {}".format(r_from_id, reason)
+            "/gban message.sender.id {}".format(r_from_id, reason)
         )
     await event.delete()
     await event.reply("**gbanning...**")
@@ -52,7 +52,7 @@ async def _(event):
         r_from_id = r.from_id
         await bot.send_message(
             G_BAN_LOGGER_GROUP,
-            "/ungban [user](tg://user?id={}) {}".format(r_from_id, reason)
+            "/ungban message.sender.id {}".format(r_from_id, reason)
         )
     await event.delete()
     await event.reply("**ungbanning...**")
