@@ -416,7 +416,7 @@ async def character(event):
     )
 
 
-@register(outgoing=True, pattern=r"^\.upcoming ?(.*)")
+@@register(outgoing=True, pattern=r"^\.(?:airing|upcoming)\s?(.)?")
 async def upcoming(message):
     rep = "<b>Upcoming anime</b>\n"
     later = jikan.season_later()
@@ -670,7 +670,7 @@ CMD_HELP.update({
     \nUsage: Returns with the Anime Download link.\
     \n\n`.char` <character name>\
     \nUsage: Return with character information.\
-    \n\n`.upcoming`\
+    \n\n`.upcoming or.airing'\
     \nUsage: Returns with Upcoming Anime information.\
     \n\n`.scanime` <anime> or .sanime <anime>\
     \nUsage: Search anime.\
