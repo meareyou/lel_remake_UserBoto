@@ -416,7 +416,7 @@ async def character(event):
     )
 
 
-@@register(outgoing=True, pattern=r"^\.(?:airing|upcoming)\s?(.)?")
+@ @ register(outgoing=True, pattern=r"^\.(?:airing|upcoming)\s?(.)?")
 async def upcoming(message):
     rep = "<b>Upcoming anime</b>\n"
     later = jikan.season_later()
