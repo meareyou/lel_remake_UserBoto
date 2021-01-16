@@ -1,3 +1,5 @@
+import datetime
+import json
 import requests
 import asyncio
 from userbot import CMD_HELP
@@ -55,6 +57,7 @@ async def anime(event):
         await asyncio.sleep(6)
         await event.delete()
         return
+    try:
         variables = {'search': query}
         response = requests.post(
             'https://graphql.anilist.co', json={
