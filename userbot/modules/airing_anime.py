@@ -6,21 +6,6 @@ import asyncio
 from userbot import CMD_HELP
 from userbot.events import register
 
-
-def t(milliseconds: int) -> str:
-    """Inputs time in milliseconds, to get beautified time,
-    as string"""
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " Days, ") if days else "") + \
-        ((str(hours) + " Hours, ") if hours else "") + \
-        ((str(minutes) + " Minutes, ") if minutes else "") + \
-        ((str(seconds) + " Seconds, ") if seconds else "") + \
-        ((str(milliseconds) + " ms, ") if milliseconds else "")
-
-
 def ani_api(search_str):
     query = """
     query ($id: Int,$search: String) {
@@ -51,8 +36,21 @@ def ani_api(search_str):
     json={
         'query': query,
          'variables': variables})
-    return response.text
+  return response.text
 
+def time_str(milliseconds: int) -> str:
+    """Inputs time in milliseconds, to get beautified time,
+    as string"""
+    seconds, milliseconds = divmod(int(milliseconds), 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    tmp_str = ((str(days) + " Days, ") if days else "") + \
+        ((str(hours) + " Hours, ") if hours else "") + \
+        ((str(minutes) + " Minutes, ") if minutes else "") + \
+        ((str(seconds) + " Seconds, ") if seconds else "") + \
+        ((str(milliseconds) + " ms, ") if milliseconds else "")
+return tmp_str[:-2]
 
 async def formatJson(data_str):
      msg = ""
@@ -61,19 +59,19 @@ async def formatJson(data_str):
      if "errors" in res:
            msg += f"**Error** : `{jsonData['errors'][0]['message']}`"
         return msg
-        else:
-     jsonData = jsonData["data"]["media"]
+      else:
+      jsonData = jsonData["data"]["media"]
       if "bannerImage" in jsonData.keys():
              image = jsonData["bannerImage"]
           else:
              msg = f"*Name*: *{jsonData['title']['romaji']}*(`{jsonData['title']['native']}`)\n*ID*: `{jsonData['id']}`[⁠ ⁠]({image})"
      if 'nextAiringEpisode' in jsonData.keys():
          time = jsonData['nextAiringEpisode']['timeUntilAiring'] * 1000
-         time = t(time)
-         msg += f"\n*Episode*: `{jsonData['nextAiringEpisode']['episode']}`\n*Airing In*: `{time}`"
+         _time = time_str(time)
+         msg += f"\n*Episode*: `{jsonData['nextAiringEpisode']['episode']}`\n*Airing In*: `{_time}`"
      else:
          msg += f"\n*Episode*:{jsonData['episodes']}\n*Status*: `N/A`"
-     return msg
+    return msg
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
  @register(outgoing=True, pattern=r"^\.airings ?(.*)")
     async def ani_airings(event):
