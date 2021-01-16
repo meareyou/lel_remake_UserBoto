@@ -1,11 +1,12 @@
+from datetime import datetime
+import time
+import json
 import requests
 import asyncio
 from userbot import CMD_HELP
 from userbot.events import register
 
-# time formatter from uniborg
-
-
+#time formatter from uniborg
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -19,30 +20,28 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
-
-
-airing_query = '''
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
+    
+airing_query ='''
+    query ($id: Int,$search: String) { 
+      Media (id: $id, type: ANIME,search: $search) { 
         id
         siteUrl
-        bannerImage
+        bannerImage 
         episodes
         title {
           romaji
           english
-          native
+          native        
         }
         nextAiringEpisode {
            airingAt
            timeUntilAiring
            episode
-        }
+        } 
       }
     }
  '''
-
-
+    
 @register(outgoing=True, pattern=r"^\.airings ?(.*)")
 async def anime(event):
     query = event.pattern_match.group(1)
@@ -55,30 +54,29 @@ async def anime(event):
         await event.edit("`usage: .airings <anime name> `")
         await asyncio.sleep(6)
         await event.delete()
-        return
+        return 
         variables = {'search': query}
         response = requests.post(
-            url, json={
-                'query': airing_query,
-                'variables': variables
-            }).json()['data']['Media']
-        image = response.get('bannerImage', None)
-        response['title']['romaji']
-        response['title']['native']
-        response['id']
-        msg = "*Name*: *{title_r}*(`{title_n}`)\n*ID*: `{mId}`"
+           url, json={
+              'query': airing_query,
+              'variables': variables
+           }).json()['data']['Media']
+        image = response.get('bannerImage',None)
+        title_r = response['title']['romaji']
+        title_n = response['title']['native']
+        mId = response['id']
+        msg = f"*Name*: *{title_r}*(`{title_n}`)\n*ID*: `{mId}`"
         if response['nextAiringEpisode']:
             time = response['nextAiringEpisode']['timeUntilAiring'] * 1000
             times = t(time)
             eps = response['nextAiringEpisode']['episode']
-            msg += f"\n*Episode*: `{eps}`\n*Airing In*: `{times}`"
+            msg += f"\n*Episode*: `{eps}`\n*Airing In*: `{times}`[⁠ ⁠]({image}"            
         else:
-            msg += f"\n*Episode*:{eps}\n*Status*: `N/A`"
-            await event.delete()
-            await event.client.send_file(event.chat_id, file=image, caption=replace_text(msg))
-
+            msg += f"\n*Episode*:{response['nextAiringEpisode']['episode']}\n*Status*: `N/A`"            
+            await event.edit(msg, parse_mode=ParseMode.MARKDOWN)
+            
             CMD_HELP.update({
-                "anime airing":
-                ".airings <anime name >\
+    "anime airing":
+    ".airings <anime name >\
      \nUSAGE: Shows you the airing of the anime."
-            })
+})
