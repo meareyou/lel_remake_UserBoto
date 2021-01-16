@@ -57,7 +57,7 @@ async def anime(event):
         return
         variables = {'search': query}
         response = requests.post(
-            url, json={
+            'https://graphql.anilist.co', json={
                 'query': airing_query,
                 'variables': variables
             }).json()['data']['Media']
