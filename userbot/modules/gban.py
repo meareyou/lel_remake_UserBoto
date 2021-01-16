@@ -35,26 +35,6 @@ async def _(event):
     await event.reply(f"**User gbanned by** `{DEFAULTUSER} `")
 
 
-@register(outgoing=True, pattern="^.gbans(?: |$)(.*)")
-async def _(event):
-    if G_BAN_LOGGER_GROUP is None:
-        await event.edit("ENV VAR is not set. This module will not work.")
-        return
-    if event.fwd_from:
-        return
-    reason = event.pattern_match.group(1)
-    if event.reply_to_msg_id:
-        r = await event.get_reply_message()
-        if r.forward:
-            r_from_id = r.forward.from_id or r.from_id
-        else:
-            r_from_id = r.from_id
-        await bot.send_message(
-            G_BAN_LOGGER_GROUP,
-            "/gban [{user.first_name}](tg://user?id={user.id}) {}".format(r_from_id, reason),)
-    await event.delete()
-
-
 @register(outgoing=True, pattern="^.ungban(?: |$)(.*)")
 async def _(event):
     if G_BAN_LOGGER_GROUP is None:
