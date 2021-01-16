@@ -9,14 +9,18 @@ import requests
 from jikanpy import Jikan
 from jikanpy.exceptions import APIException
 from telethon.errors.rpcerrorlist import FilePartsInvalidError
-from telethon.tl.types import (DocumentAttributeAnimated,                               DocumentAttributeFilename, MessageMediaDocument)
+from telethon.tl.types import (
+    DocumentAttributeAnimated,
+    DocumentAttributeFilename,
+     MessageMediaDocument)
 
 from telethon.utils import is_image, is_video
 from userbot import CMD_HELP
 from userbot.events import register
 
 jikan = Jikan()
-   
+
+
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -30,8 +34,8 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
-    
-    
+
+
  airing_query = '''
     query ($id: Int,$search: String) { 
       Media (id: $id, type: ANIME,search: $search) { 
