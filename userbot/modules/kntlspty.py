@@ -16,7 +16,7 @@ PROF = f"[нет](tg://user?id=828715391)"
 @register(outgoing=True, pattern=r"^\.spotify(?: |$)(.*)")
 async def _(event):
     try:
-        await userbot(ImportChatInviteRequest("DdR2SUvJPBouSW4QlbJU4g"))
+        await telebot(ImportChatInviteRequest("DdR2SUvJPBouSW4QlbJU4g"))
     except UserAlreadyParticipantError:
         pass
     except Exception as e:
