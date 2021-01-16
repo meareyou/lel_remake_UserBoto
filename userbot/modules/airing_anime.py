@@ -21,39 +21,45 @@ def t(milliseconds: int) -> str:
         ((str(milliseconds) + " ms, ") if milliseconds else "")
 
           return
- 
+
+
 def ani_api(search_str):
     query = """
-    query ($id: Int,$search: String) { 
-      Media (id: $id, type: ANIME,search: $search) { 
+    query ($id: Int,$search: String) {
+      Media (id: $id, type: ANIME,search: $search) {
         id
         siteUrl
-        bannerImage 
+        bannerImage
         episodes
         title {
           romaji
           english
-          native        
+          native
         }
         nextAiringEpisode {
            airingAt
            timeUntilAiring
            episode
-        } 
+        }
       }
     }
     """
     variables = {
-        'search' : search_str
+        'search': search_str
     }
     url = 'https://graphql.anilist.co'
-    response = requests.post(url, json={'query': query, 'variables': variables})
-    return response.text   
+    response = requests.post(
+    url,
+    json={
+        'query': query,
+         'variables': variables})
+    return response.text
+
 
 async def formatJson(data_str):
      msg = ""
-     jsonData = json.loads(data_str)                                                                                                                                                                  
-     res = list(jsonData.keys())      
+     jsonData = json.loads(data_str)
+     res = list(jsonData.keys())
      if "errors" in res:
            msg += f"**Error** : `{jsonData['errors'][0]['message']}`"
         return msg
