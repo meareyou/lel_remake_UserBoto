@@ -6,35 +6,41 @@ import asyncio
 from userbot import CMD_HELP
 from userbot.events import register
 
+
 def callApi(search_str):
-    query ='''
-    query ($id: Int,$search: String) { 
-      Media (id: $id, type: ANIME,search: $search) { 
+    query = '''
+    query ($id: Int,$search: String) {
+      Media (id: $id, type: ANIME,search: $search) {
         id
         siteUrl
-        bannerImage 
+        bannerImage
         episodes
         title {
           romaji
           english
-          native        
+          native
         }
         nextAiringEpisode {
            airingAt
            timeUntilAiring
            episode
-        } 
+        }
       }
     }
     '''
-    variables= {
+    variables = {
         'search': search_str
     }
-    response = requests.post('https://graphql.anilist.co', json={'query': query, 'variables': variables})
+    response = requests.post(
+        'https://graphql.anilist.co',
+        json={
+            'query': query,
+            'variables': variables})
     return response.text
 
+
 async def formatJson(data_str):
-    msg =''
+    msg = ''
     jsonData = jsonData.loads(data_str)
     res = list(jsonData.keys())
     if 'errors' in res:
@@ -53,6 +59,7 @@ async def formatJson(data_str):
                             msg += f"\n*Episode*:{jsonData['episodes']}\n*Status*: `N/A`"
                             return msg
 
+
 @register(outgoing=True, pattern=r"^\.airings ?(.*)")
 async def ani_anime(event):
     if event.fwd_from:
@@ -68,8 +75,8 @@ async def ani_anime(event):
             return
         result = await callApi(search_query)
         msg = await formatJson(result)
-        await event.edit(msg,link_preview=True)
-        
+        await event.edit(msg, link_preview=True)
+
 CMD_HELP.update({
     "anime airing":
     ".airings <anime name >\
