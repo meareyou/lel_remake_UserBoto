@@ -6,6 +6,7 @@ Available Commands:
 import asyncio
 from userbot.events import register
 from userbot import bot, CMD_HELP, G_BAN_LOGGER_GROUP, ALIVE_NAME
+from userbot import BOTLOG, BOTLOG_CHATID
 
 # imported from uniborg by @heyworld
 
@@ -51,7 +52,7 @@ async def _(event):
             r_from_id = r.from_id
         await bot.send_message(
             G_BAN_LOGGER_GROUP,
-            "/gban [user](tg://user?id={}) {}".format(r_from_id, reason),)
+            "/gban [{user.first_name}](tg://user?id={user.id}) {}".format(r_from_id, reason),)
     await event.delete()
 
 
