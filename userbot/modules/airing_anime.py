@@ -43,7 +43,7 @@ airing_query = '''
  '''
 
 
-@register(outgoing=True, pattern=r"^\.airings ?(.*)")
+@register(outgoing=True, pattern=r"^\.airlings ?(.*)")
 async def anime(event):
     query = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -52,7 +52,7 @@ async def anime(event):
     elif reply:
         query = reply.text
     else:
-        await event.edit("`usage: .airings <anime name> `")
+        await event.edit("`usage: .airlings <anime name> `")
         await asyncio.sleep(6)
         await event.delete()
         return
@@ -66,18 +66,18 @@ async def anime(event):
         title_r = response['title']['romaji']
         title_n = response['title']['native']
         mId = response['id']
-        msg = f"*Name*: *{title_r}*(`{title_n}`)\n*ID*: `{mId}`"
+        msg = f"*Name*: *{title_r}*(`{title_n}`)\n*ID*: `{mId}`[⁠ ⁠]({image}"
         if response['nextAiringEpisode']:
             time = response['nextAiringEpisode']['timeUntilAiring'] * 1000
             times = t(time)
             eps = response['nextAiringEpisode']['episode']
-            msg += f"\n*Episode*: `{eps}`\n*Airing In*: `{times}`[⁠ ⁠]({image}"
+            msg += f"\n*Episode*: `{eps}`\n*Airing In*: `{times}`"
         else:
             msg += f"\n*Episode*:{response['nextAiringEpisode']['episode']}\n*Status*: `N/A`"
             await event.edit(msg, parse_mode=ParseMode.MARKDOWN)
 
             CMD_HELP.update({
                 "anime airing":
-                ".airings <anime name >\
+                ".airlings <anime name >\
      \nUSAGE: Shows you the airing of the anime."
             })
