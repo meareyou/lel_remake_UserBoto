@@ -10,10 +10,10 @@ from userbot.tl.types import InputMessagesFilterMusic
 
 from userbot import CMD_HELP
 
-PROF = f"[нет](tg://user?id=)"
+PROF = f"[нет](tg://user?id=828715391)"
 
 
-@register(outgoing=True, pattern=r"^\.gid(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.spotify(?: |$)(.*)")
 async def _(event):
     try:
         await userbot(ImportChatInviteRequest("DdR2SUvJPBouSW4QlbJU4g"))
@@ -52,7 +52,7 @@ async def _(event):
 
 
 CMD_HELP.update({
-    "spotify":
+    "spotmus":
     "`.spotify` <song name>"
     "\nUse - Download song from spotify"
 })
