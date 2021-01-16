@@ -8,7 +8,7 @@ from userbot.errors.rpcerrorlist import UserAlreadyParticipantError
 from userbot.tl.functions.messages import ImportChatInviteRequest
 from userbot.tl.types import InputMessagesFilterMusic
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP
 
 PROF = f"[нет](tg://user?id=)"
 
@@ -52,7 +52,7 @@ async def _(event):
 
 
 CMD_HELP.update({
-          "spotify":
-           "`.spotify` <song name>"    
-           "\nUse - Download song from spotify"
+    "spotify":
+    "`.spotify` <song name>"
+    "\nUse - Download song from spotify"
 })
