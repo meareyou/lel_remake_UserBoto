@@ -6,6 +6,7 @@ import asyncio
 from userbot import CMD_HELP
 from userbot.events import register
 
+
 def ani_api(search_str):
     query = """
     query ($id: Int,$search: String) {
