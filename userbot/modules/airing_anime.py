@@ -1,6 +1,3 @@
-from datetime import datetime
-import time
-import json
 import requests
 import asyncio
 from userbot import CMD_HELP
