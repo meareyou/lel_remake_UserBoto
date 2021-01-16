@@ -19,8 +19,9 @@ def t(milliseconds: int) -> str:
         ((str(minutes) + " Minutes, ") if minutes else "") + \
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
-    return tmp[:-2]
-
+        
+       return 
+       tmp[:-2]
 
 airing_query = '''
     query ($id: Int,$search: String) {
@@ -79,7 +80,7 @@ async def anime(event):
             await event.edit(msg, parse_mode=ParseMode.MARKDOWN)
 
             CMD_HELP.update({
-                "anime airing":
+                "anime_airing":
                 ".airlings <anime name >\
      \nUSAGE: Shows you the airing of the anime."
             })
