@@ -4,9 +4,9 @@ Music scrapper - Scrapps of SMD Database
 # Better now - @its_xditya
 # Based off plugin by @okay_retard && @hellboi_atul
 
-from userbot.errors.rpcerrorlist import UserAlreadyParticipantError
-from userbot.tl.functions.messages import ImportChatInviteRequest
-from userbot.tl.types import InputMessagesFilterMusic
+from telethon.errors.rpcerrorlist import UserAlreadyParticipantError
+from telethon.tl.functions.messages import ImportChatInviteRequest
+from telethon.tl.types import InputMessagesFilterMusic
 
 from userbot import CMD_HELP
 
