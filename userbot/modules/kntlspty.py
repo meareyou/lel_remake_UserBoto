@@ -7,7 +7,7 @@ Music scrapper - Scrapps of SMD Database
 from telethon.errors.rpcerrorlist import UserAlreadyParticipantError
 from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.tl.types import InputMessagesFilterMusic
-
+from userbot.events import register
 from userbot import CMD_HELP
 
 PROF = f"[нет](tg://user?id=828715391)"
