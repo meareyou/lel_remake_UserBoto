@@ -19,9 +19,10 @@ def t(milliseconds: int) -> str:
         ((str(minutes) + " Minutes, ") if minutes else "") + \
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
-        
-       return 
-       tmp[:-2]
+
+    return
+    tmp[:-2]
+
 
 airing_query = '''
     query ($id: Int,$search: String) {
