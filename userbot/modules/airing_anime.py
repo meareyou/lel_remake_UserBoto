@@ -20,9 +20,6 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
 
-          return
-
-
 def ani_api(search_str):
     query = """
     query ($id: Int,$search: String) {
