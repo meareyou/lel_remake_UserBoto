@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+import time
 import json
 import requests
 import asyncio
@@ -22,7 +23,7 @@ def t(milliseconds: int) -> str:
  
 
 def ani_api(search_str):
-    query = '"""
+    query = """
     query ($id: Int,$search: String) { 
       Media (id: $id, type: ANIME,search: $search) { 
         id
@@ -62,7 +63,7 @@ async def formatJson(data_str):
              image = jsonData["bannerImage"]
           else:
              msg = f"*Name*: *{jsonData['title']['romaji']}*(`{jsonData['title']['native']}`)\n*ID*: `{jsonData['id']}`[⁠ ⁠]({image})"
-     if jsonData['nextAiringEpisode']:
+     if 'nextAiringEpisode' in jsonData.keys():
          time = jsonData['nextAiringEpisode']['timeUntilAiring'] * 1000
          time = t(time)
          msg += f"\n*Episode*: `{jsonData['nextAiringEpisode']['episode']}`\n*Airing In*: `{time}`"
