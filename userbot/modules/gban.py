@@ -3,7 +3,6 @@ Group Administrations bots where you are SUDO
 Available Commands:
 .gban REASON
 .ungban REASON"""
-from telethon import events
 import asyncio
 from userbot.events import register
 from userbot import bot, CMD_HELP, G_BAN_LOGGER_GROUP, ALIVE_NAME
@@ -66,4 +65,4 @@ CMD_HELP.update(
 \nUsage: Globally unBan users from all the Group Administrations bots where you are SUDO"
     }
 )
-#Credit OUBNEW
+# Credit OUBNEW
