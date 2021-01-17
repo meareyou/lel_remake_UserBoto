@@ -83,7 +83,7 @@ async def _(event):
     native = data['title']['native']
     episodes = data.get('episodes')
     coverImg = data.get('coverImage')['extraLarge']
-    msg += f"**Name**: **{romaji}**(`{native}`)"
+    msg = f"**Name**: **{romaji}**(`{native}`)"
     msg += f"\n**ID**: `{mid}`"
     if data['nextAiringEpisode']:
         time = data['nextAiringEpisode']['timeUntilAiring'] * 1000
