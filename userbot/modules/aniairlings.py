@@ -54,7 +54,7 @@ async def _(event):
     await event.get_reply_message()
     if not q_:
         await event.edit('Usage: airlings <anime name>')
-        event.delete()
+        await event.delete()
         return
     url = "https://graphql.anilist.co"
     vrb = {"search": q_}
