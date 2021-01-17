@@ -83,18 +83,19 @@ async def _(event):
     native = data['title']['native']
     episodes = data.get('episodes')
     coverImg = data.get('coverImage')['extraLarge']
-    msg = f"**Name**: **{romaji}**(`{native}`)"
+    msg += f"**Name**: **{romaji}**(`{native}`)"
     msg += f"\n**ID**: `{mid}`"
     if data['nextAiringEpisode']:
         time = data['nextAiringEpisode']['timeUntilAiring'] * 1000
         time = time_(time)
         msg += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
         msg += f"\n**Airing in**: `{time}`"
-        await event.client.send_file(file=coverImg, caption=msg, reply_to=event)
+        await event.client.send_file(event.chat_id,file=coverImg, caption=msg, reply_to=event)
+        #return msg
     else:
         msg += f"\n**Episode**: `{episodes}`"
         msg += f"\n**Status**: `N/A`"
-        await event.client.send_file(file=coverImg, caption=msg, reply_to=event)
+        await event.client.send_file(event.chat_id,file=coverImg, caption=msg, reply_to=event)
 
 CMD_HELP.update({
     "aniairlings":
