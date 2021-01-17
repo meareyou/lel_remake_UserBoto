@@ -119,8 +119,8 @@ async def _(event):
     if len(msg) > 1024:
         await message.edit(out)
         return
-    #msg += f"\n**Episode**: `{episodes}`"
-    #msg += f"\n**Status**: `N/A`"
+    msg += f"\n**Episode**: `{episodes}`"
+    msg += f"\n**Status**: `N/A`"
     await event.client.send_file(file=coverImg, caption=msg, reply_to=event)
     await event.delete()
 
