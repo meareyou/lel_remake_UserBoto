@@ -108,6 +108,5 @@ async def _(event):
 
 CMD_HELP.update({
     "aniairlings":
-        ".airlings <Anime name>\
-        \nUsage: shows anime airing
+        ".airlings <Anime name>\nUsage: shows anime airing"
     })
