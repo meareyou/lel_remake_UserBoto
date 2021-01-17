@@ -1,9 +1,15 @@
+import datetime
+import json
+import html
+import json
+import textwrap
+import requests
+import asyncio
 from userbot import CMD_HELP
 from userbot.events import register
 
-# time formatter from uniborg
 
-
+#time formatter from uniborg
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -17,16 +23,26 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
+ 
 
-
-query = '''
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
+def _api(str_):
+    query = '''
+    query ($id: Int,$search: String) { 
+      Media (id: $id, type: ANIME,search: $search) { 
         id
         title {
           romaji
           native
         }
+        nextAiringEpisode {
+           airingAt
+           timeUntilAiring
+           episode
+        }
+        description (asHtml: false)
+        startDate{
+            year
+          }
           episodes
           chapters
           volumes
@@ -38,36 +54,53 @@ query = '''
           averageScore
           genres
           bannerImage
-        nextAiringEpisode {
-           airingAt
-           timeUntilAiring
-           episode
-        }
       }
     }
     '''
+    variables = {
+        'search' : str_
+    }
+    url = 'https://graphql.anilist.co'
+    response = requests.post(url, json={'query': query, 'variables': variables})
+    return response.text
+    
+ 
+def jsonResult(resp):
+    msg = ""
+    mData = json.loads(resp)
+    err = list(mData.keys()) 
+    if "errors" in err:
+        msg += f"**Anime** : `{mData['errors'][0]['message']}`"
+        return msg
+    else:
+        mResult = mData['data']['Media']
+        msg += mResult['bannerImage']
+        msg += f"*Name*: *{mResult['title']['romaji']}*(`{mResult['title']['native']}`)\n*ID*: `{mResult['id']}`"
+        if mResult['nextAiringEpisode']:
+            time = mResult['nextAiringEpisode']['timeUntilAiring'] * 1000
+            time = t(time)
+            msg += f"\n*Episode*: `{mResult['nextAiringEpisode']['episode']}`\n*Airing In*: `{time}`"
+        else:
+            return msg
 
 
-@register(outgoing=True, pattern=r"^.airlings ?(.*)")
+@register(outgoing=True, pattern=r"^.airling ?(.*)")
 async def _(event):
+    r_ = await event.get_reply_message()
     q_ = event.pattern_match.group(1)
-    await event.get_reply_message()
-    if not q_:
-        await event.edit('Usage: airlings <anime name>')
-        await event.delete()
+    if q_:
+        pass
+    elif r_:
+        q_ = r_.text
+    else:
+        await event.edit("Usage: .airlings <Anime Name>")
         return
-    url = "https://graphql.anilist.co"
-    vrb = {"search": q_}
-    res = requests.post(url, json={
-        "query": query,
-        "variables": vrb
-    }).json()["data"]["media"]
-    i_m = res.get("bannerImage", None)
-    msg = f"*Name*: *{res['title']['romaji']}*(`{res['title']['native']}`)\n*ID*: `{res['id']}`[⁠ ⁠]({i_m})"
-    await event.edit(msg, link_preview=true)
-
+    mJson = _api(q_)
+    mData = jsonResult(mJson)
+    await event.edit(mData,link_preview=True)
+    
 CMD_HELP.update({
-    "airlings":
-        ".airlings <Anime name>\
-        \nUSAGE: Show anime airing in time"
-})
+    "Anime Airing":
+        "Usage: .airling <Anime Name>\
+        \nShows you the airing of the anime"
+    })
