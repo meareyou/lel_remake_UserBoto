@@ -103,7 +103,7 @@ async def _(event):
         return
     mJson = _api(q_)
     mData = jsonResult(mJson)
-    await event.edit(mData, link_preview=True)
+    await event.edit(mData, link_preview=False)
 
 CMD_HELP.update({
     "aniairlings":
