@@ -4,14 +4,16 @@
 	By : lel_remake_UserBoto
 """
 
+import datetime
+import asyncio
+import html
 import json
+import textwrap
 import requests
 from userbot import CMD_HELP
 from userbot.events import register
 
 # time formatter from uniborg
-
-
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -80,15 +82,18 @@ def jsonResult(resp):
         return msg
     else:
         mResult = mData['data']['Media']
-        mResult['bannerImage']
-        msg += f"({image})[ ]\n**Name**: {mResult['title']['romaji']}({mResult['title']['native']})\n**ID**: {mResult['id']}"
+        image = mResult['bannerImage']
+        msg += f"({image})[ ]\n**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)"
+        msg += f"\n**ID**: `{mResult['id']}`"
         if mResult['nextAiringEpisode']:
             time = mResult['nextAiringEpisode']['timeUntilAiring'] * 1000
             time = t(time)
-            msg += f"\n**Episode**: {mResult['nextAiringEpisode']['episode']}\n\n**Airing In**: {time}"
+            msg += f"\n**Episode**: `{mResult['nextAiringEpisode']['episode']}`"
+            msg += f"\n**Airing in**: `{time}`"
             return msg
         else:
-            msg += f"\n**Episode**:{mResult['episodes']}\n**Status**: N/A"
+            msg += f"\n**Episode**:{mResult['episodes']}"
+            msg += f"\n**Status**: `N/A`"
             return msg
 
 
