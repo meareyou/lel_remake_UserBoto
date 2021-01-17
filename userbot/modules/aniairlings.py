@@ -90,7 +90,13 @@ async def _(event):
         time = time_(time)
         caption += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
         caption += f"\n**Airing in**: `{time}`"
-        return caption
+        await event.delete()
+        await event.client.send_file(
+            event.chat_id,
+            file=coverImg,
+            caption=caption,
+            reply_to=event,
+        )
     else:
         caption += f"\n**Episode**: `{episodes}`"
         caption += f"\n**Status**: `N/A`"
