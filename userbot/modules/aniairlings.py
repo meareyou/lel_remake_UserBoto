@@ -80,7 +80,9 @@ def jsonResult(resp):
         return msg
     else:
         mResult = mData['data']['Media']
-        msg += f"({mResult['bannerImage']})"
+        #msg += f"{mResult['bannerImage']}"
+        image = mResult.get('bannerImage', None)
+        msg += f"{image}"
         msg += f"\n**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)"
         msg += f"\n**ID**: `{mResult['id']}`"
         if mResult['nextAiringEpisode']:
