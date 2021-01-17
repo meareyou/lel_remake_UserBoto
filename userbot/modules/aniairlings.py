@@ -90,8 +90,8 @@ async def _(event):
         time = time_(time)
         msg += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
         msg += f"\n**Airing in**: `{time}`"
-        await event.client.send_file(event.chat_id, file=coverImg, caption=msg, reply_to=event)
-        # return msg
+        #await event.client.send_file(event.chat_id, file=coverImg, caption=msg, reply_to=event)
+        return msg
     else:
         msg += f"\n**Episode**: `{episodes}`"
         msg += f"\n**Status**: `N/A`"
