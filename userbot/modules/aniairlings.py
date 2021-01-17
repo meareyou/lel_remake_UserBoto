@@ -101,7 +101,7 @@ async def _(event):
     mData = jsonResult(mJson)
     await event.edit(mData, link_preview=True)
 
-CM_HELP.update({
+CMD_HELP.update({
     "aniairlings":
         ".airlings <Anime name>\
         \nUsage: shows anime airing"
