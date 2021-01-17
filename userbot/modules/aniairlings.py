@@ -1,20 +1,15 @@
-"""	
-	Shows anime airing time in anilist	
-	Usage : .airling anime name	
-	By : lel_remake_UserBoto 	
+"""
+	Shows anime airing time in anilist
+	Usage : .airling anime name
+	By : lel_remake_UserBoto
 """
 
-import datetime
-import asyncio
-import html
-import json
-import textwrap
 import requests
 from userbot import CMD_HELP
 from userbot.events import register
 
 
-#time formatter from uniborg
+# time formatter from uniborg
 def time_(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -29,10 +24,11 @@ def time_(milliseconds: int) -> str:
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
 
+
 def _api(str_):
     query = '''
-    query ($id: Int,$search: String) { 
-      Media (id: $id, type: ANIME,search: $search) { 
+    query ($id: Int,$search: String) {
+      Media (id: $id, type: ANIME,search: $search) {
         id
         title {
           romaji
@@ -55,13 +51,18 @@ def _api(str_):
     }
     '''
     variables = {
-        'search' : str_,
-        "asHtml" : True
+        'search': str_,
+        "asHtml": True
     }
     url = 'https://graphql.anilist.co'
-    response = requests.post(url, json={'query': query, 'variables': variables})
+    response = requests.post(
+        url,
+        json={
+            'query': query,
+            'variables': variables})
     jsonD = response.json()
     return jsonD
+
 
 @register(outgoing=True, pattern=r"^.airling ?(.*)")
 async def _(event):
@@ -86,16 +87,16 @@ async def _(event):
     msg += f"\n**ID**: `{mid}`"
     if data['nextAiringEpisode']:
         time = data['nextAiringEpisode']['timeUntilAiring'] * 1000
-        time = time_(time)        
+        time = time_(time)
         msg += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
         msg += f"\n**Airing in**: `{time}`"
-        await event.client.send_file(file=coverImg,caption=msg,reply_to=event)
+        await event.client.send_file(file=coverImg, caption=msg, reply_to=event)
     else:
         msg += f"\n**Episode**: `{episodes}`"
         msg += f"\n**Status**: `N/A`"
-        await event.client.send_file(file=coverImg,caption=msg,reply_to=event)
+        await event.client.send_file(file=coverImg, caption=msg, reply_to=event)
 
-CMD_HELP.update({ 
+CMD_HELP.update({
     "aniairlings":
     ".airlings <Anime name>\
     \nUsage: shows anime airing"
