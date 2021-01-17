@@ -104,7 +104,7 @@ async def _(event):
         if response.text.startswith("Sebelum"):
             await bot.send_message(chat, agere)
             await bot.send_read_acknowledge(conv.chat_id)
-            """ - don't spam notif - """         
+            """ - don't spam notif - """
             resp = await response.message
             return resp
         else:
