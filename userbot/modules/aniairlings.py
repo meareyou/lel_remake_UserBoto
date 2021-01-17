@@ -3,10 +3,6 @@
 	Usage : .airling anime name
 	By : lel_remake_UserBoto
 """
-import asyncio
-import html
-import json
-import datetime
 import requests
 from userbot import CMD_HELP
 from userbot.events import register
