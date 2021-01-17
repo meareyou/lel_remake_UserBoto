@@ -1,19 +1,17 @@
-"""	
-	Shows anime airing time in anilist	
-	Usage : .airling anime name	
-	By : lel_remake_UserBoto 	
+"""
+	Shows anime airing time in anilist
+	Usage : .airling anime name
+	By : lel_remake_UserBoto
 """
 
-import datetime
-import asyncio
-import html
 import json
-import textwrap
 import requests
 from userbot import CMD_HELP
 from userbot.events import register
 
-#time formatter from uniborg
+# time formatter from uniborg
+
+
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -27,12 +25,12 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
-    
-    
+
+
 def _api(str_):
     query = '''
-    query ($id: Int,$search: String) { 
-      Media (id: $id, type: ANIME,search: $search) { 
+    query ($id: Int,$search: String) {
+      Media (id: $id, type: ANIME,search: $search) {
         id
         title {
           romaji
@@ -62,17 +60,21 @@ def _api(str_):
     }
     '''
     variables = {
-        'search' : str_
+        'search': str_
     }
     url = 'https://graphql.anilist.co'
-    response = requests.post(url, json={'query': query, 'variables': variables})
+    response = requests.post(
+        url,
+        json={
+            'query': query,
+            'variables': variables})
     return response.text
-    
- 
+
+
 def jsonResult(resp):
     msg = ""
     mData = json.loads(resp)
-    err = list(mData.keys()) 
+    err = list(mData.keys())
     if "errors" in err:
         msg += f"**Anime** : `{mData['errors'][0]['message']}`"
         return msg
@@ -98,10 +100,10 @@ async def _(event):
         return
     mJson = _api(q_)
     mData = jsonResult(mJson)
-    await event.edit(mData,link_preview=True)
+    await event.edit(mData, link_preview=True)
 
-CMD_HELP.update({ 
+CMD_HELP.update({
     "aniairlings":
         ".airlings <Anime name>\
         \nUsage: shows anime airing"
-    })
+})
