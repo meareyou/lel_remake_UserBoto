@@ -81,14 +81,14 @@ def jsonResult(resp):
     else:
         mResult = mData['data']['Media']
         image = mResult['bannerImage']
-        msg += f"[⁠ ⁠]({image})**Name** : **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)**ID** : '{mResult['id']}`"
+        msg += [⁠ ⁠]({image})**Name** : **{mResult['title']-['romaji']}**(`{mResult['title']['native']}`)\n**ID**: `{mResult['id']}"
         if mResult['nextAiringEpisode']:
             time = mResult['nextAiringEpisode']['timeUntilAiring'] * 1000
             time = t(time)
-            msg += f"**Episode** : `{mResult['nextAiringEpisode']['episode']}`**Airing In** : `{time}`"
+            msg += "\n**Episode** : `{mResult['nextAiringEpisode']['episode']}`\n**Airing In** : `{time}`"
             return msg
         else:
-            msg += f"**Episode** :{mResult['episodes']}**Status** : `N/A`"
+            msg += "**Episode** :{mResult['episodes']}\n**Status** : `N/A`"
             return msg
 
 
