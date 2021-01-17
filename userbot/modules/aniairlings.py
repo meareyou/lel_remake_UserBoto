@@ -59,7 +59,7 @@ async def _(event):
     url = "https://graphql.anilist.co"
     vrb = {"search": q_}
     res = requests.post(url, json={
-        "query": airing_query,
+        "query": query,
         "variables": vrb
     }).json()["data"]["media"]
 
@@ -67,7 +67,7 @@ async def _(event):
     res["title"]["romaji"]
     res["title"]["native"]
     res["id"]
-    msg = "*Name: *{t_r}*(`{t_n`})*ID: `{i_d}`[ ] ({image})*"
+    msg = f"*Name: *{t_r}*(`{t_n`})*ID: `{i_d}`[ ] ({image})*"
     await event.edit(msg)
 
 CMD_HELP.update({
