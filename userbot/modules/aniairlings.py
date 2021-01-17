@@ -71,18 +71,12 @@ def jsonResult(resp):
     else:
         mResult = mData['data']['Media']
         img = mResult['bannerImage']
-        msg += f"**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)\n**ID**: `{mResult['id']}`"
+        msg += f"{img}\n**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)\n**ID**: `{mResult['id']}`"
         if 'nextAiringEpisode' in mResult:
             time = mResult['nextAiringEpisode']['timeUntilAiring'] * 1000
             time = t(time)
             msg += f"\n**Episode**: `{mResult['nextAiringEpisode']['episode']}`\n**Airing In**: `{time}`"
         else:
-            await event.delete()
-            await event.client.send_file(
-                event.chat_id,
-                file=img,
-                caption=msg,
-                reply_to=event)
             return msg
 
 
@@ -98,8 +92,8 @@ async def _(event):
         await event.edit("Usage: .airling <Anime Name>")
         return
     mJson = _api(q_)
-    jsonResult(mJson)
-
+    mResu = jsonResult(mJson)
+    await event.edit(mResu,link_preview=False)
 
 CMD_HELP.update({
     "aniairlings":
