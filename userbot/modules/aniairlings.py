@@ -99,11 +99,11 @@ async def _(event):
         caption += f"\n**Status**: `N/A`"
         await event.delete()
         await event.client.send_file(
-        event.chat_id,
-        file=coverImg,
-        caption=caption,
-        reply_to=event,
-      )
+            event.chat_id,
+            file=coverImg,
+            caption=caption,
+            reply_to=event,
+        )
 CMD_HELP.update({
     "aniairlings":
     ".airlings <Anime name>\
