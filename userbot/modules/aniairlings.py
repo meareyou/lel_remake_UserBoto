@@ -109,5 +109,5 @@ async def _(event):
 CM_HELP.update({
     "aniairlings":
         ".airlings <Anime name>\
-        \nUsage: shows anime airing
+        \nUsage: shows anime airing"
     })
