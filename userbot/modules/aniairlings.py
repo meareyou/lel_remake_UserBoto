@@ -1,36 +1,38 @@
-"""
-	Shows anime airing time in anilist
-	Usage : .airling anime name
-	By : lel_remake_UserBoto
+"""	
+	Shows anime airing time in anilist	
+	Usage : .airling anime name	
+	By : lel_remake_UserBoto 	
 """
 
+import datetime
+import asyncio
+import html
 import json
+import textwrap
 import requests
-from userbot import CMD_HELP
-from userbot.events import register
-
-# time formatter from uniborg
+#from userbot import CMD_HELP
+#from userbot.events import register
 
 
-def t(milliseconds: int) -> str:
+#time formatter from uniborg
+def time_(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
     seconds, milliseconds = divmod(int(milliseconds), 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " Days, ") if days else "") + \
-        ((str(hours) + " Hours, ") if hours else "") + \
-        ((str(minutes) + " Minutes, ") if minutes else "") + \
-        ((str(seconds) + " Seconds, ") if seconds else "") + \
-        ((str(milliseconds) + " ms, ") if milliseconds else "")
+    tmp = ((str(days) + "Days, ") if days else "") + \
+        ((str(hours) + "Hours, ") if hours else "") + \
+        ((str(minutes) + "Minutes, ") if minutes else "") + \
+        ((str(seconds) + "Seconds, ") if seconds else "") + \
+        ((str(milliseconds) + "ms, ") if milliseconds else "")
     return tmp[:-2]
-
 
 def _api(str_):
     query = '''
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
+    query ($id: Int,$search: String) { 
+      Media (id: $id, type: ANIME,search: $search) { 
         id
         title {
           romaji
@@ -41,73 +43,84 @@ def _api(str_):
            timeUntilAiring
            episode
         }
-        description (asHtml: false)
+        coverImage {
+           extraLarge
+        }
         startDate{
             year
-          }
+        }
           episodes
-          chapters
-          volumes
-          season
-          type
-          format
-          status
-          duration
-          averageScore
-          genres
           bannerImage
       }
     }
     '''
     variables = {
-        'search': str_
+        'search' : str_,
+        "asHtml" : True
     }
     url = 'https://graphql.anilist.co'
-    response = requests.post(
-        url,
-        json={
-            'query': query,
-            'variables': variables})
-    return response.text
+    response = requests.post(url, json={'query': query, 'variables': variables})
+    jsonD = response.json()
+    return jsonD
 
-
+ 
 def jsonResult(resp):
     msg = ""
     mData = json.loads(resp)
-    err = list(mData.keys())
+    err = list(mData.keys()) 
     if "errors" in err:
         msg += f"**Anime** : `{mData['errors'][0]['message']}`"
         return msg
     else:
         mResult = mData['data']['Media']
-        #msg += f"{mResult['bannerImage']}"
-        image = mResult.get('bannerImage', None)
-        msg += f"{image}"
-        msg += f"\n**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)"
-        msg += f"\n**ID**: `{mResult['id']}`"
+        image = mResult['bannerImage']
+        msg += f"({image})[ ]**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)"
+        msg += f"**ID**: `{mResult['id']}`"
         if mResult['nextAiringEpisode']:
             time = mResult['nextAiringEpisode']['timeUntilAiring'] * 1000
             time = t(time)
-            msg += f"\n**Episode**: `{mResult['nextAiringEpisode']['episode']}`\n"
-            msg += f"\n**Airing in**: `{time}`"
+            msg += f"**Episode**: `{mResult['nextAiringEpisode']['episode']}`"
+            msg += f"**Airing in**: `{time}`"
             return msg
         else:
-            msg += f"\n**Episode**:{mResult['episodes']}"
-            msg += f"\n**Status**: `N/A`"
+            msg += f"**Episode**:{mResult['episodes']}"
+            msg += f"**Status**: `N/A`"
             return msg
 
 
 @register(outgoing=True, pattern=r"^.airling ?(.*)")
 async def _(event):
-    q_ = event.pattern_match.group(1)
-    if not q_:
+    query = event.pattern_match.group(1)
+    if not query:
         await event.edit("Usage: .airling <Anime Name>")
         return
-    mJson = _api(q_)
-    mData = jsonResult(mJson)
-    await event.edit(mData, link_preview=False)
-
-CMD_HELP.update({
+    result = await _api(query)
+    error = await result.get('errors')
+    if error:
+        msg += f"*Anime* : `{error[0].get('message')}`"
+        return msg
+    else:
+        data = result['data']['Media']
+        mid = data.get('id')
+        romaji = data['title']['romaji']
+        native = data['title']['native']
+        episodes = data.get('episodes')
+        coverImg = data.get('coverImage')['extraLarge']
+        msg += f"**Name**: **{romaji}**(`{native}`)"
+        msg += f"\n**ID**: `{mid}`"
+        if data['nextAiringEpisode']:
+            time = data['nextAiringEpisode']['timeUntilAiring'] * 1000
+            time = time_(time)
+            msg += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
+            msg += f"\n**Airing in**: `{time}`"
+            return msg
+        else:
+            msg += f"\n**Episode**: `{episodes}`"
+            msg += f"\n**Status**: `N/A`"
+            await event.client.send_file(file=coverImg,caption=msg,reply_to=event)
+   
+CMD_HELP.update({ 
     "aniairlings":
-        ".airlings <Anime name>\nUsage: shows anime airing"
+    ".airlings <Anime name>\
+    \nUsage: shows anime airing"
 })
