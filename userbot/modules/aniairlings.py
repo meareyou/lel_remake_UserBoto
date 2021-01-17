@@ -3,7 +3,10 @@
 	Usage : .airling anime name
 	By : lel_remake_UserBoto
 """
-
+import asyncio
+import html
+import json
+import datetime
 import requests
 from userbot import CMD_HELP
 from userbot.events import register
@@ -91,9 +94,7 @@ async def _(event):
         time = time_(time)
         caption += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
         caption += f"\n**Airing in**: `{time}`"
-        # await event.client.send_file(event.chat_id, file=coverImg,
-        # caption=msg, reply_to=event)
-        # return msg
+        return caption
     else:
         caption += f"\n**Episode**: `{episodes}`"
         caption += f"\n**Status**: `N/A`"
