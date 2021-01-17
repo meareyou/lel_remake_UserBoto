@@ -1,9 +1,14 @@
+import datetime
+import json
+import asyncio
+import html
+import json
+import textwrap
+from io import BytesIO, StringIO
 from userbot import CMD_HELP
 from userbot.events import register
 
-# time formatter from uniborg
-
-
+#time formatter from uniborg
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -17,11 +22,10 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
-
-
+    
 query = '''
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
+    query ($id: Int,$search: String) { 
+      Media (id: $id, type: ANIME,search: $search) { 
         id
         title {
           romaji
@@ -47,29 +51,24 @@ query = '''
     }
     '''
 
-
 @register(outgoing=True, pattern=r"^.airlings ?(.*)")
 async def _(event):
     q_ = event.pattern_match.group(1)
-    await event.get_reply_message()
+    r_ = await event.get_reply_message()
     if not q_:
         await event.edit('Usage: airlings <anime name>')
         await event.delete()
         return
     url = "https://graphql.anilist.co"
     vrb = {"search": q_}
-    res = requests.post(url, json={
+    res = requests.post(url,json={
         "query": query,
         "variables": vrb
     }).json()["data"]["media"]
-
-    res.get("bannerImage", None)
-    res["title"]["romaji"]
-    res["title"]["native"]
-    res["id"]
-    msg = f"*Name: *{t_r}*(`{t_n`})*ID: `{i_d}`[ ] ({image})*"
-    await event.edit(msg)
-
+    i_m = res.get("bannerImage",None)
+    msg = f"*Name: *{res["title"]["romaji"]}*(`{res["title"]["native"]`})*ID: `{res["id"]}`[ ] ({i_m})*"  
+    await event.edit(msg,link_preview=true)
+    
 CMD_HELP.update({
     "airlings":
         ".airlings <Anime name>\
