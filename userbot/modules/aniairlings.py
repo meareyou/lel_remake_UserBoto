@@ -1,10 +1,3 @@
-import datetime
-import json
-import asyncio
-import html
-import json
-import textwrap
-from io import BytesIO, StringIO
 from userbot import CMD_HELP
 from userbot.events import register
 
@@ -58,7 +51,7 @@ query = '''
 @register(outgoing=True, pattern=r"^.airlings ?(.*)")
 async def _(event):
     q_ = event.pattern_match.group(1)
-    r_ = await event.get_reply_message()
+    await event.get_reply_message()
     if not q_:
         await event.edit('Usage: airlings <anime name>')
         await event.delete()
