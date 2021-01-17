@@ -28,24 +28,22 @@ def t(milliseconds: int) -> str:
 
 def _api(str_):
     query = '''
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
+    query ($id: Int,$search: String) { 
+      Media (id: $id, type: ANIME,search: $search) { 
         id
+        siteUrl
+        bannerImage 
+        episodes
         title {
           romaji
+          english
           native
         }
         nextAiringEpisode {
            airingAt
            timeUntilAiring
            episode
-        }
-        description (asHtml: false)
-        startDate{
-            year
-          }
-          episodes
-          bannerImage
+        } 
       }
     }
     '''
