@@ -70,7 +70,7 @@ async def _(event):
         "variables": vrb
     }).json()["data"]["media"]
     i_m = res.get("bannerImage", None)
-    msg = f"*Name: *{res["title"]["romaji"]}*(`{res["title"]["native"]`})*ID: `{res["id"]}`[ ] ({i_m})*"
+    msg = f"*Name*: *{res['title']['romaji']}*(`{res['title']['native']}`)\n*ID*: `{res['id']}`[⁠ ⁠]({i_m})"
     await event.edit(msg, link_preview=true)
 
 CMD_HELP.update({
