@@ -1,16 +1,19 @@
-"""
-	Shows anime airing time in anilist
-	Usage : .airling anime name
-	By : @lxs7499
+"""	
+	Shows anime airing time in anilist	
+	Usage : .airling anime name	
+	By : @lxs7499 	
 """
 
+import datetime
 import json
+import textwrap
 import requests
+import asyncio
 from userbot import CMD_HELP
 from userbot.events import register
 
 
-# time formatter from uniborg
+#time formatter from uniborg
 def t(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
@@ -24,12 +27,12 @@ def t(milliseconds: int) -> str:
         ((str(seconds) + " Seconds, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
-
+ 
 
 def _api(str_):
     query = '''
-    query ($id: Int,$search: String) {
-      Media (id: $id, type: ANIME,search: $search) {
+    query ($id: Int,$search: String) { 
+      Media (id: $id, type: ANIME,search: $search) { 
         id
         title {
           romaji
@@ -50,50 +53,17 @@ def _api(str_):
     }
     '''
     variables = {
-        'search': str_
+        'search' : str_
     }
     url = 'https://graphql.anilist.co'
-    response = requests.post(
-        url,
-        json={
-            'query': query,
-            'variables': variables})
+    response = requests.post(url, json={'query': query, 'variables': variables})
     return response.text
-
-
+    
+ 
 def jsonResult(resp):
     msg = ""
     mData = json.loads(resp)
-    err = list(mData.keys())
-    if "errors" in err:
-        msg += f"**Anime** : `{mData['errors'][0]['message']}`"
-        return msg
-    else:
-        mResult = mData['data']['Media']
-        msg += mResult['bannerImage']
-        msg += f"**Name**: **{mResult['title']['romaji']}**(`{mResult['title']['native']}`)\n**ID**: `{mResult['id']}`"
-        if 'nextAiringEpisode' in mResult:
-            time = mResult['nextAiringEpisode']['timeUntilAiring'] * 1000
-            time = t(time)
-            msg += f"\n**Episode**: `{mResult['nextAiringEpisode']['episode']}`\n**Airing In**: `{time}`"
-        else:
-            return msg
-
-
-@register(outgoing=True, pattern=r"^.airling ?(.*)")
-async def _(event):
-    r_ = await event.get_reply_message()
-    q_ = event.pattern_match.group(1)
-    if q_:
-        pass
-    elif r_:
-        q_ = r_.text
-    else:
-        await event.edit("Usage: .airlings <Anime Name>")
-        return
-    mJson = _api(q_)
-    mData = json.loads(mJson)
-    err = list(mData.keys())
+    err = list(mData.keys()) 
     if "errors" in err:
         msg += f"**Anime** : `{mData['errors'][0]['message']}`"
         return msg
@@ -112,10 +82,26 @@ async def _(event):
                 file=img,
                 caption=msg,
                 reply_to=event)
+            return msg
 
 
+@register(outgoing=True, pattern=r"^.airling ?(.*)")
+async def _(event):
+    r_ = await event.get_reply_message()
+    q_ = event.pattern_match.group(1)
+    if q_:
+        pass
+    elif r_:
+        q_ = r_.text
+    else:
+        await event.edit("Usage: .airling <Anime Name>")
+        return
+    mJson = _api(q_)
+    jsonResult(mJson)
+
+    
 CMD_HELP.update({
     "aniairlings":
         "Usage: .airling <Anime Name>\
         \nShows you the airing of the anime"
-})
+    })
