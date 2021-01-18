@@ -41,8 +41,8 @@ async def _neolink(event):
         uri = uri
         req = requests.get(uri).text
         sho = bs(req, 'html.parser')
-        eps = sho.findAll('div', class_='sbox')
-        tm_ = _ase.find_all('li')
+        _asw = sho.findAll('div', class_='sbox')
+        tm_ = _asw.find_all('li')
         tk = f"{tm_}"
         tt = re.sub(r"</li>", "\n</li>\n", tk)
         xs = f"{tt}"
