@@ -44,9 +44,10 @@ async def _neolink(event):
 
 CMD_HELP.update({
     "neonime":
-        ".neonime\
+        "Download anime Dari Neonime\
+        \n\n.neonime\
         \nUsage: liat anime baru rilis dari neonime\
-        \n.neolink <Url link>\
+        \n\n.neolink <Url link>\
         \nUsage: cari download link\
         \n\nCopy Url link dari .neonime"
 })
