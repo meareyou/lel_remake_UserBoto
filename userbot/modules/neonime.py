@@ -4,7 +4,8 @@ import re
 from userbot import CMD_HELP
 from userbot.events import register
 
-#blom kelar heduh pusing
+# blom kelar heduh pusing
+
 
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
 async def _neonime(event):
