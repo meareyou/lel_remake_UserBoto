@@ -36,10 +36,12 @@ async def _neolink(event):
         await event.edit('Masukan url')
         return
     else:
+        uri = uri
         req = requests.get(uri).text
         sho = bs(req, 'html.parser')
         eps = sho.findAll('div', class_='sbox')
-        await event.edit(eps, parse_mode='html')
+        res = f"<b>{eps}</b>"
+        await event.edit(res, parse_mode='html')
 
 
 CMD_HELP.update({
