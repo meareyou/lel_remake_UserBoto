@@ -22,7 +22,7 @@ async def _(event):
             link = hh['href']
             out += f"- <a href='{link}'>{_tt}</a>"
             if len(out) > 1000:
-               break
+                break
             await event.edit(out, parse_mode="html")
 
 CMD_HELP.update({
