@@ -40,10 +40,7 @@ async def _neolink(event):
         req = requests.get(uri).text
         sho = bs(req, 'html.parser')
         eps = sho.findAll('div', class_='sbox')
-        for res in eps:
-            st = f'{res}'
-            tt = re.sub(r'</a>', '\n', st)
-            await event.edit(tt, parse_mode='html')
+        await event.edit(eps, parse_mode='html')
 
 CMD_HELP.update({
     "neonime":
