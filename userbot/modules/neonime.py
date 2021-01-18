@@ -19,7 +19,7 @@ async def _(event):
         else:
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
-            link = hh['href']
+            link = _lucu['href']
             out += f"- <a href='{link}'>{_tt}</a>"
             if len(out) > 1000:
                 break
