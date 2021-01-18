@@ -4,6 +4,7 @@ import re
 from userbot import CMD_HELP
 from userbot.events import register
 
+#blom kelar heduh pusing
 
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
 async def _neonime(event):
@@ -40,7 +41,8 @@ async def _neolink(event):
         req = requests.get(uri).text
         sho = bs(req, 'html.parser')
         eps = sho.findAll('div', class_='sbox')
-        await event.edit(eps, parse_mode='html')
+        out = f"{eps}"
+        await event.edit(out, parse_mode='html')
 
 CMD_HELP.update({
     "neonime":
