@@ -44,7 +44,7 @@ async def _neolink(event):
         eps = sho.findAll('div', class_='sbox')
         tm_ = _ase.find_all('li')
         tk = f"{tm_}"
-        tt = re.sub(r"</li>","\n</li>\n",tk)
+        tt = re.sub(r"</li>", "\n</li>\n", tk)
         xs = f"{tt}"
         await event.edit(xs, parse_mode='html')
 
