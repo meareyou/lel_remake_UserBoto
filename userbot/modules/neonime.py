@@ -1,11 +1,9 @@
-import html
 import requests
-import asyncio
-import html
 from bs4 import BeautifulSoup as bs
 import re
 from userbot import CMD_HELP
 from userbot.events import register
+
 
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
 async def _neonime(event):
@@ -39,11 +37,11 @@ async def _neolink(event):
         return
     else:
         req = requests.get(uri).text
-        sho = bs(req,'html.parser')
-        eps = sho.findAll('div',class_='sbox')
-        await event.edit(eps,parse_mode='html')
-        
-        
+        sho = bs(req, 'html.parser')
+        eps = sho.findAll('div', class_='sbox')
+        await event.edit(eps, parse_mode='html')
+
+
 CMD_HELP.update({
     "neonime":
         ".neonime\
