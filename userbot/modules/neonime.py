@@ -21,7 +21,7 @@ async def _neonime(event):
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
             link = _lucu['href']
-            out += f""▪ <a href='{link}'>{_tt}</a>\n"
+            out += f""▪ < a href = '{link}' > {_tt} < /a >\n"
             if len(out) > 1000:
                 break
             await event.edit(out, parse_mode="html")
@@ -42,8 +42,8 @@ async def _neolink(event):
         eps = sho.findAll('div', class_='sbox')
         for res in eps:
             st = f'{res}'
-            tt = re.sub(r'</a>','\n',st)
-            await event.edit(tt,parse_mode='html') 
+            tt = re.sub(r'</a>', '\n', st)
+            await event.edit(tt, parse_mode='html')
 
 CMD_HELP.update({
     "neonime":
