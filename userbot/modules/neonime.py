@@ -8,7 +8,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
-async def neonime(event):
+async def _(event):
     url = 'https://neonime.vip/episode/'
     ht_ = requests.get(url).text
     _bs = bs(ht_,"html.parser")
