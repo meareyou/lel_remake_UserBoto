@@ -16,8 +16,8 @@ async def _search(event):
         await event.edit("Masukan keyword pencarian")
         return
     else:
-        url = f"https://nekopoi.care/?s={uri}"
-        _a = r.get(url, headers=ua).text
+        url = f"https://nekopoi.care/?s={uri}&post_type=anime"
+        _a = r.get(url).text
         _b = bs(_a, 'html.parser')
         await event.edit(f"{_b}")
         o_ = f"**Hasil search Dari kucing peduli**\n\n"
