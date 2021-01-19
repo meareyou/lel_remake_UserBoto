@@ -8,7 +8,8 @@ from userbot.events import register
 
 r = Session()
 ua = {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'}
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
+}
 
 
 @register(outgoing=True, pattern=r"^\.neko ?(.*)")
@@ -18,7 +19,7 @@ async def _search(event):
         await event.edit("Masukan keyword pencarian")
         return
     else:
-        url = f"https://nekopoi.care/?s={qu}"
+        url = f"https://nekopoi.care/?s={uri}"
         _a = r.get(url, headers=ua).text
         _b = bs(_a, 'html.parser')
         o_ = f"**Hasil search Dari kucing peduli**\n\n"
