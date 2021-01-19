@@ -23,15 +23,15 @@ async def _search(event):
         _a = r.get(url, headers=ua).text
         _b = bs(_a, 'html.parser')
         o_ = f"**Hasil search Dari kucing peduli**\n\n"
-       if _b.find('div',attrs={'class':'postsbody'}).find('h2').text == "Tidak ada hasil":
-          await event.edit('tidak ada hasil')
-       else:
-           _c = _b.find('div',attrs={'class':'result'}).find('ul').findAll('li')
-           for _d in _c:
-               _e = _d.find('h2').find('a').text
-               o_ += f"* {_e}"
-               await event.edit(o_)
-        
+        if _b.find('div',attrs={'class':'postsbody'}).find('h2').text == "Tidak ada hasil":
+            await event.edit('tidak ada hasil')
+        else:
+            _c = _b.find('div',attrs={'class':'result'}).find('ul').findAll('li')
+            for _d in _c:
+                _e = _d.find('h2').find('a').text
+                o_ += f"* {_e}"
+                await event.edit(o_)
+
 CMD_HELP.update({
     "kucingpeduli":
     ".nekop <nama>\
