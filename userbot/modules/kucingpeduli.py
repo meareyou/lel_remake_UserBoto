@@ -19,6 +19,7 @@ async def _search(event):
         url = f"https://nekopoi.care/?s={uri}"
         _a = r.get(url, headers=ua).text
         _b = bs(_a, 'html.parser')
+        await event.edit(f"{_b}")
         o_ = f"**Hasil search Dari kucing peduli**\n\n"
         if _b.find('div', attrs={'class': 'postsbody'}).find(
                 'h2').text == "Tidak ada hasil":
