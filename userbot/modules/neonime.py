@@ -28,32 +28,9 @@ async def _neonime(event):
                 break
             await event.edit(out, parse_mode="html")
 
-
-@register(outgoing=True, pattern=r"^\.neolink ?(.*)")
-async def _neolink(event):
-    uri = event.pattern_match.group(1)
-    if not uri:
-        await event.edit("Masukan url episode, liat .help neonime")
-    elif 'https://' not in uri:
-        await event.edit('Masukan url')
-        return
-    else:
-        uri = uri
-        req = requests.get(uri).text
-        sho = bs(req, 'html.parser')
-        _asw = sho.findAll('div', class_='sbox')
-        tm_ = _asw.find_all('li')
-        tk = f"{tm_}"
-        tt = re.sub(r"</li>", "\n</li>\n", tk)
-        xs = f"{tt}"
-        await event.edit(xs, parse_mode='html')
-
 CMD_HELP.update({
     "neonime":
         "Download anime Dari Neonime\
         \n\n.neonime\
-        \nUsage: liat anime baru rilis dari neonime\
-        \n\n.neolink <Url link>\
-        \nUsage: cari download link\
-        \n\nCopy Url link dari .neonime"
+        \nUsage: liat anime baru rilis dari neonime\"
 })
