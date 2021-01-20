@@ -19,7 +19,7 @@ async def _neonime(event):
         _lucu = kntl_.find('a')
         if not _lucu:
             _lucu = 'none'
-        else:
+        else: #FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
             link = _lucu['href']
@@ -32,5 +32,4 @@ CMD_HELP.update({
     "neonime":
     ">`.neonime `"
     "\nUsage: liat anime baru rilis dari neonime"
-})
 })
