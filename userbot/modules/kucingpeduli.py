@@ -9,7 +9,7 @@ ua = {
 }
 
 
-@register(outgoing=True, pattern=r"^\.kucing ?(.*)")
+@register(outgoing=True, pattern=r"^\.kucing?(.*)")
 async def _search(event):
     uri = event.pattern_match.group(1)
     if not uri:
