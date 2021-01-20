@@ -31,6 +31,6 @@ async def _neonime(event):
 CMD_HELP.update({
     "neonime":
         "Download anime Dari Neonime\
-        \n\n.neonime\
-        \nUsage: liat anime baru rilis dari neonime\"
+        \n\n.neonime\"
+        "\nUsage: liat anime baru rilis dari neonime\"
 })
