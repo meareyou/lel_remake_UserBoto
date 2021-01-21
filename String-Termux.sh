@@ -9,8 +9,7 @@ clear
 neofetch
 printf '\n\n\n$green$time\n\n\n'
 printf $blue "\n1. Get String File for User\n2. Get String File for Bot$green\n3. Install Kebutuhan$yellow\n4. Clear File$red\n00. Cancel "
-
-read -p "????????? : " okl
+read -p "\n????????? : " okl
 
 if [ $okl = 1 ]
 then
@@ -41,8 +40,7 @@ fi
 
 if [ $okl = 4 ]
 then
-printf 'Clearing not used files'
-sleep 2;cd $HOME;rm -rf requirements.txt;rm -rf string_session.py;rm -rf string_support_bot.py;clear;logout
+printf 'Clearing not used files';sleep 2;cd $HOME;rm -rf requirements.txt;rm -rf string_session.py;rm -rf string_support_bot.py;clear;logout
 fi
 
 if [ $okl = 0 ] || [ $okl = 00 ]
