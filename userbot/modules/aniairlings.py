@@ -74,9 +74,8 @@ async def _(event):
     result = _api(query)
     error = result.get('errors')
     if error:
-        err = f"*Anime* : `{error[0].get('message')}`"
-        await event.edit(err)
-        print(err)
+        err = f"**Anime** : `{error[0].get('message')}`"
+        await event.edit(err)       
         return
     caption = ""
     data = result['data']['Media']
