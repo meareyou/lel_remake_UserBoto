@@ -75,7 +75,7 @@ async def _(event):
     error = result.get('errors')
     if error:
         err = f"**Anime** : `{error[0].get('message')}`"
-        await event.edit(err)       
+        await event.edit(err)
         return
     caption = ""
     data = result['data']['Media']
