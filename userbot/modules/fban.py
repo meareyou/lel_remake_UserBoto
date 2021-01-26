@@ -48,7 +48,7 @@ async def fban(event):
         chat = int(i.chat_id)
         try:
             async with bot.conversation(chat) as conv:
-                await conv.send_message(f"/fban {user_link} {reason}")
+                await conv.send_message(f"/ban {user_link} {reason}")
                 reply = await conv.get_response()
                 await bot.send_read_acknowledge(conv.chat_id,
                                                 message=reply,
