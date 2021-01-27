@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup as bs
-import requests as r
+import requests as re
 from userbot import CMD_HELP
 from userbot.events import register
 
@@ -12,7 +12,7 @@ async def _(event):
         return
     att = []
     a = f"https://nekopoi.care/?s={s}"
-    b = r.get(a).text
+    b = re.get(a).text
     c = bs(b, "html.parser")
     if c.find('div', attrs={'class': 'postsbody'}).find(
             'h2').text == "Tidak ada hasil":
@@ -28,7 +28,9 @@ async def _(event):
                 "url": b,
             })
         for k, v in enumerate(att):
-            r += f"<a href='{v["url"]}'>{v["title"]}</a>"
+            t = v["title"]
+            u = v["url"]
+            r += f"<a href='{u}'>{t}</a>"
             await event.edit(r)
 
 CMD.HELP.update({
