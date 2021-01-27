@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup as bs
 import requests as re
-from userbot import CMD_HELP
 from userbot.events import register
 
 
