@@ -3,6 +3,7 @@ import requests as re
 from userbot.events import register
 from userbot import CMD_HELP
 
+
 @register(outgoing=True, pattern=r"^.kucingpeduli ?(.*)")
 async def _(event):
     query = event.pattern_match.group(1)
