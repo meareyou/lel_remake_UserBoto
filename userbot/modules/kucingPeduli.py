@@ -32,7 +32,7 @@ async def _(event):
             r += f"<a href='{u}'>{t}</a>"
             await event.edit(r)
 
-CMD.HELP.update({
+CMD_HELP.update({
     "kucingPeduli":
         ".kucingpeduli <query>\
         \nUsage: search di neko"
