@@ -11,7 +11,7 @@ async def _(event):
         await event.edit("Usage: .kucingpeduli <Hentai Name>")
         return
     att = []
-    a = f"https://nekopoi.care/?s={s}"
+    a = f"https://nekopoi.care/?s={query}"
     b = re.get(a).text
     c = bs(b, "html.parser")
     if c.find('div', attrs={'class': 'postsbody'}).find(
