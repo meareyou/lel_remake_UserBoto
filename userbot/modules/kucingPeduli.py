@@ -18,6 +18,7 @@ async def _(event):
             'h2').text == "Tidak ada hasil":
         await event.edit("not found")
     else:
+        r = f"Result:\n"
         d = c.find('div', class_="result").parent.find_all('li')
         for arr in d:
             a = arr.find('h2').text.strip()
@@ -27,7 +28,7 @@ async def _(event):
                 "url": b,
             })
         for k, v in enumerate(att):
-            r = f"<a href='{v["url"]}'>{v["url"]}</>"
+            r += f"<a href='{v["url"]}'>{v["title"]}</a>"
             await event.edit(r)
 
 CMD.HELP.update({
