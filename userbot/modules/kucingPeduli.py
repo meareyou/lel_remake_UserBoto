@@ -4,16 +4,17 @@ from userbot.events import register
 from userbot import CMD_HELP
 
 
-@register(outgoing=True, pattern=r"^.kucingpeduli ?(.*)")
+@register(outgoing=True, pattern=r"^.nekocare ?(.*)")
 async def _(event):
     query = event.pattern_match.group(1)
     if not query:
-        await event.edit("Usage: .kucingpeduli <Hentai Name>")
+        await event.edit("Usage: .nekocare <Hentai Name>")
         return
     att = []
     a = f"https://nekopoi.care/?s={query}"
     b = re.get(a).text
     c = bs(b, "html.parser")
+    await event.edit(f"{c}\nPlease wait..")
     if c.find('div', attrs={'class': 'postsbody'}).find(
             'h2').text == "Tidak ada hasil":
         await event.edit("not found")
