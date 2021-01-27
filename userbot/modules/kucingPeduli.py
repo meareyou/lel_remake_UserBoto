@@ -13,8 +13,8 @@ async def _(event):
     att = []
     a = f"https://nekopoi.care/?s={query}"
     b = re.get(a).text
+    await event.edit(f"{b}\nPlease wait..")
     c = bs(b, "html.parser")
-    await event.edit(f"{c}\nPlease wait..")
     if c.find('div', attrs={'class': 'postsbody'}).find(
             'h2').text == "Tidak ada hasil":
         await event.edit("not found")
