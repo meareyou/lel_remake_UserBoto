@@ -3,6 +3,7 @@ import requests
 from userbot.events import register
 from userbot import CMD_HELP
 
+
 @register(outgoing=True, pattern=r"^.nekocare ?(.*)")
 async def _(event):
     try:
@@ -15,7 +16,8 @@ async def _(event):
         b = requests.get(a).text
         await event.edit(f"{b}\nPlease wait..")
         c = bs(b, "html.parser")
-        if c.find('div', attrs={'class': 'postsbody'}).find('h2').text == "Tidak ada hasil":
+        if c.find('div', attrs={'class': 'postsbody'}).find(
+                'h2').text == "Tidak ada hasil":
             await event.edit("not found")
         else:
             r = f"Result:\n"
@@ -33,7 +35,7 @@ async def _(event):
                 r += f"<a href='{u}'>{t}</a>"
                 await event.delete()
                 await event.edit(r)
-    except:
+    except BaseException:
         return None
 
 CMD_HELP.update({
