@@ -47,8 +47,8 @@ requests>=2.18.4
 search-engine-parser>=0.6.1
 speedtest-cli>=2.0.2
 sqlalchemy>=1.2
-telethon
-telethon-session-sqlalchemy>=0.2.6
+telethon>=1.19.1
+telethon-session-sqlalchemy>=0.2.16
 urbandict>=0.5
 wikipedia>=1.4.0
 coffeehouse>=2.1.0
@@ -60,7 +60,7 @@ lyricsgenius
 redis>=3.3.10
 PyDrive2
 pyDownload
-beautifulsoup4>=4.8.1
+beautifulsoup4>=4.9.3
 PyGithub
 bs4
 colorama
