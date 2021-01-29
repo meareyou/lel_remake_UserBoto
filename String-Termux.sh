@@ -5,7 +5,7 @@ green='\033[32;1m'
 red='\033[31;1m'
 printf "%s\n\n\n$green$time\n\n\n"
 printf "%s\n1. Get String File for User\n2. Get String File for Bot\n3. Install Kebutuhan\n4. Clear File$red\n00. Cancel\n\n\n"
-read -r "????????? :" okl
+read -p "????????? :" okl
 $blue
 if [ "$okl" = 1 ] ||  [ "$okl" = 01 ]
 then
