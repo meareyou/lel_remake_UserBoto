@@ -73,7 +73,7 @@ bs4
 colorama
 covid
 base
-pip=>21.0
+pip=>20.3.1
 setuptools>=28.8.0
 selenium>=3.141.0 
 # SpeechRecognition
