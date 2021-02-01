@@ -1,70 +1,32 @@
-import asyncio
-from pyppeteer import launch
-from bs4 import BeautifulSoup
 from userbot import CMD_HELP
 from userbot.events import register
-
-
-async def search(anime: str):
-    browser = await launch(args=["--no-sandbox"], handleSIGINT=False,
-                           handleSIGTERM=False,
-                           handleSIGHUP=False)
-    page = await browser.newPage()
-    await page.goto(f"https://nekopoi.care/?s={anime}&post_type=anime")
-    html = await page.evaluate('''() => {
-    return document.body.innerHTML;
-  }''')
-    await page.close()
-    await browser.close()
-    return html
-
-
-def s(anime: str, loop):
-    asyncio.set_event_loop(loop)
-    task = loop.create_task(search(anime))
-    val = loop.run_until_complete(task)
-    loop.close()
-    return val
-
-
-def _search(anime: str):
-    try:
-        loop = asyncio.new_event_loop()
-        html = s(anime, loop)
-        soup = BeautifulSoup(html, "html5lib")
-        all_contents = soup.find('div', class_="result").parent.find_all('li')
-        contents = []
-        for content in all_contents:
-            title = content.find('h2').text.strip()
-            videoURL = content.find('h2').findNext('a').attrs['href']
-            contents.append({
-                "title": title,
-                "url": videoURL,
-            })
-        return contents
-    except BaseException:
-        return None
-
+import requests
+import json
 
 @register(outgoing=True, pattern=r"^\.kucing ?(.*)")
 async def _(event):
     query = event.pattern_match.group(1)
     if not query:
-        await event.edit("Null")
+        await event.edit("Usage: <query>")
     else:
-        result_anime = _search(query)
-        msg = f"<b>Result: {query}</b>\n\n"
-        if result_anime is None:
-            await event.edit("404 not found")
+        await event.edit("Tungguuuu....")
+        url = "https://nekosearch.frissst.repl.co/search/"
+        req = requests.get(url+query)
+        jsons = req.json()
+        msg = f"<b>Hasil: {query}</b>\n\n"
+        if jsons["success"] == False:
+            await event.edit("404 Not found")
         else:
-            for k, v in enumerate(result_anime):
-                url = v["url"]
-                title = v["title"]
-                msg += f"> <a href='{url}'>{title}</a>"
+            m_result = jsons["result"]
+            for result in m_result:
+                m_title = result["title"]
+                m_video_url = result["url"]
+                msg += f"~ <a href='{m_video_url}'>{m_title}</a>"
                 await event.edit(msg, parse_mode="html")
 
 CMD_HELP.update({
     "nekocare":
-        "> Usage: .kucing <query>\
-        \nCari jav/hen di nekopoi"
+        "Nekopoi search:\
+          \n> Usage: .kucing <query>\
+             \n Cari jav/hen di nekopoi"
 })
