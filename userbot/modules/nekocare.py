@@ -1,7 +1,6 @@
 from userbot import CMD_HELP
 from userbot.events import register
-import requests
-
+import requests 
 
 @register(outgoing=True, pattern=r"^\.kucing ?(.*)")
 async def _(event):
@@ -21,12 +20,12 @@ async def _(event):
             for result in m_result:
                 m_title = result["title"]
                 m_video_url = result["url"]
-                msg += f"~ <a href='{m_video_url}'>{m_title}</a>"
+                msg += f"~ <a href='{m_video_url}'>{m_title}</a>\n"
                 await event.edit(msg, parse_mode="html")
 
 CMD_HELP.update({
     "nekocare":
         "Nekopoi search:\
           \n> Usage: .kucing <query>\
-             \n Cari jav/hen di nekopoi"
+           \n Cari jav/hen di nekopoi"
 })
