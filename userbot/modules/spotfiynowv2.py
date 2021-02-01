@@ -72,7 +72,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "spotifynow": ">`.spotnow2`"
+        "spotifynow2": ">`.spotnow2`"
         "\nUsage: Show what you're listening on spotify."
         "\n\n>`.spotnow2 s`"
         "\nUsage: Same, but send as sticker"
