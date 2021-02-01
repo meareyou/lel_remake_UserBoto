@@ -31,7 +31,7 @@ fi
 
 if [ "$okl" = 3 ] ||  [ "$okl" = 03 ]
 then
-pkg install python -y;pkg install wget -y;cd /data/data/com.termux/files/home || exit;wget https://raw.githubusercontent.com/meareyou/ezrequ/main/requirements.txt;pip install -r requirements.txt
+pkg install python -y;pip install telethon;pkg install wget -y;cd /data/data/com.termux/files/home || exit;wget https://raw.githubusercontent.com/meareyou/ezrequ/main/requirements.txt;pip install -r requirements.txt
 clear
 fi
 
