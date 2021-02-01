@@ -32,6 +32,7 @@ gsearch
 hachoir>=3.0a5
 REPO_LINK
 heroku3
+html5lib
 html_telegraph_poster
 jikanpy
 pendulum
