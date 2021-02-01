@@ -1,6 +1,7 @@
 from userbot import CMD_HELP
 from userbot.events import register
-import requests 
+import requests
+
 
 @register(outgoing=True, pattern=r"^\.kucing ?(.*)")
 async def _(event):
