@@ -1,7 +1,7 @@
 from userbot import CMD_HELP
 from userbot.events import register
 import requests
-import json
+
 
 @register(outgoing=True, pattern=r"^\.kucing ?(.*)")
 async def _(event):
@@ -11,10 +11,10 @@ async def _(event):
     else:
         await event.edit("Tungguuuu....")
         url = "https://nekosearch.frissst.repl.co/search/"
-        req = requests.get(url+query)
+        req = requests.get(url + query)
         jsons = req.json()
         msg = f"<b>Hasil: {query}</b>\n\n"
-        if jsons["success"] == False:
+        if not jsons["success"]:
             await event.edit("404 Not found")
         else:
             m_result = jsons["result"]
