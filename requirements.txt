@@ -100,3 +100,4 @@ vcsi
 lottie
 cairosvg
 colour
+pyppeteer
