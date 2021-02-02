@@ -2,6 +2,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 import requests
 from bs4 import BeautifulSoup as bs
+import re
 
 @register(outgoing=True, pattern=r"^\.kucing ?(.*)")
 async def _(event):
