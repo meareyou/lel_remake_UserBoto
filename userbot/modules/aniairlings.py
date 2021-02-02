@@ -64,29 +64,33 @@ def _api(str_):
     jsonD = response.json()
     return jsonD
 
+
 """Jadwal rilis anime"""
+
 
 def getList():
     list_ = []
     html = requests.get("https://otakudesu.tv/jadwal-rilis/")
-    soup = bs(html.text,"html5lib")
-    base = soup.find("div",class_="kgjdwl321")
-    for daftar in base.find_all("div",class_="kglist321"):
+    soup = bs(html.text, "html5lib")
+    base = soup.find("div", class_="kgjdwl321")
+    for daftar in base.find_all("div", class_="kglist321"):
         list_.append(daftar)
-    return {"html":list_}
+    return {"html": list_}
+
 
 def getData(query):
     list_hari = []
     list_anime = []
     r = getList()["html"]
-    for k,v in enumerate(r[query].find_all("li")):
+    for k, v in enumerate(r[query].find_all("li")):
         list_anime.append(v.find("a").get_text())
-    for p,o in enumerate(r[query].find_all("h2")):
+    for p, o in enumerate(r[query].find_all("h2")):
         list_hari.append(o.get_text())
     return {
-        "hari":list_hari,
-        "anime":list_anime
+        "hari": list_hari,
+        "anime": list_anime
     }
+
 
 @register(outgoing=True, pattern=r"^.airling ?(.*)")
 async def _(event):
@@ -132,6 +136,7 @@ async def _(event):
             reply_to=event,
         )
 
+
 @register(outgoing=True, pattern=r"^\.anirilis ?(.*)")
 async def getResult(event):
     query = event.pattern_match.group(1).lower()
@@ -139,21 +144,35 @@ async def getResult(event):
         await event.edit("**Usage**: `.anirilis` <Senin/Selasa>")
     else:
         m_query = 0
-        tbl_hari = ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
+        tbl_hari = [
+            "senin",
+            "selasa",
+            "rabu",
+            "kamis",
+            "jumat",
+            "sabtu",
+            "minggu"]
         msg = "Jadwal Rilis Hari "
-        if query == tbl_hari[0]: m_query = 0
-        if query == tbl_hari[1]: m_query = 1
-        if query == tbl_hari[2]: m_query = 2
-        if query == tbl_hari[3]: m_query = 3
-        if query == tbl_hari[4]: m_query = 4
-        if query == tbl_hari[5]: m_query = 5
-        if query == tbl_hari[6]: m_query = 6
+        if query == tbl_hari[0]:
+            m_query = 0
+        if query == tbl_hari[1]:
+            m_query = 1
+        if query == tbl_hari[2]:
+            m_query = 2
+        if query == tbl_hari[3]:
+            m_query = 3
+        if query == tbl_hari[4]:
+            m_query = 4
+        if query == tbl_hari[5]:
+            m_query = 5
+        if query == tbl_hari[6]:
+            m_query = 6
         an_data = getData(m_query)["hari"]
         ar_data = getData(m_query)["anime"]
         for an_otr in an_data:
-            msg +=f"**{an_otr}**:\n"
+            msg += f"**{an_otr}**:\n"
         for an_ott in ar_data:
-            msg +=f" ~ `{an_ott}`\n"
+            msg += f" ~ `{an_ott}`\n"
         msg += f"\n**Note**: `Jadwal bisa berubah sewaktu-waktu`"
         await event.edit(msg)
 
