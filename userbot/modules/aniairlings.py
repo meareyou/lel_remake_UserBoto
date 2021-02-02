@@ -6,7 +6,9 @@
 import requests
 from userbot import CMD_HELP
 from userbot.events import register
-
+import re
+import requests
+from bs4 import BeautifulSoup as bs 
 
 # time formatter from uniborg
 def time_(milliseconds: int) -> str:
@@ -175,6 +177,7 @@ async def getResult(event):
         for an_ott in ar_data:
             msg += f" ~ `{an_ott}`\n"
         msg += f"\n**Note**: `Jadwal bisa berubah sewaktu-waktu`"
+        await event.delete()
         await event.edit(msg)
 
 # f"FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4"
