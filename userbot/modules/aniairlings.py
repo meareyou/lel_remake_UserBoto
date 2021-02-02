@@ -143,6 +143,7 @@ async def getResult(event):
     if not query:
         await event.edit("**Usage**: `.anirilis` <Senin/Selasa>")
     else:
+        await event.edit("Loading...")
         m_query = 0
         tbl_hari = [
             "senin",
