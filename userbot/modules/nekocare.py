@@ -64,14 +64,14 @@ def get_search_result(query):
     search_res = search(query)
     search_response = search_res["response"]
     search_body = search_res["result"]
-    message = f"**Hasil**:`{query}`\n\n"
+    message = f"**Hasil Nekopoi**: `{query}`\n\n"
     if search_response == "404":
-        return "`Nothing found..`"
+        return "`Nothing found`"
     else:
         for src in search_body:
             title = src["title"]
             ids = src["id"]
-            message += f"**Title**:{title}\n **Id**:`{ids}`\n"
+            message += f"• {title}\n/`{ids}` \n"
         return message
 
 
