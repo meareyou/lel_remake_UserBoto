@@ -37,6 +37,9 @@
   > Finally turn on the app and check the logs (settings -> view logs) enjoy :)
 ```
 
+### Run on repl.it
+[![Run repl.it](https://img.shields.io/badge/run-string__session.py-blue?style=for-the-badge&logo=repl.it)](https://repl.it/@meareyou/Get-Telethon-StringTelegram?__cf_chl_jschl_tk__=9775ea627640851fbae7d58665f1a64d143bee8a-1612228454-0-ARo9PFFgX6neOxX_58HyGb8ETaPlOkpX5Y-J1AzE9PmptqA79Q6sS8dLgeI6CayQSJcTDKI4GjFsl-RHTbKHmD9q0ezEAMH449xMeGO2wcJ47gvCfg64hReYNm1rs60BAgtN1J5BYLKNowGCZ1qJj9XxOBepNWiQ_tcQtFtZbo7RTzpFFH84orv7AbtWEXzUOhW_mApnPlsJFhnTcJSH5Qxb-TQ-EgKC2JOj-YAq9PhTLQoXEcTZqvAd0_ZFGQonbyfeGSfM4i58s1Y-Wk2648gPUjWygGjrEVB87uEoRo2O4JT9hk1amSuYgKRQz9tgYoKCaxilM16hZH_8umdtAxRyErw4my_2IOtM9gtTnlcj#.replit)
+
 ```
 Get string Termux Method [ JUST COPY COMMAND BELLOW ]
 ```
