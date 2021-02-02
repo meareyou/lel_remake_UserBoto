@@ -71,7 +71,7 @@ def get_search_result(query):
         for src in search_body:
             title = src["title"]
             ids = src["id"]
-            message += f"• {title}\n/`{ids}` \n"
+            message += f"• {title} \ [`{ids}`]\n"
         return message
 
 
