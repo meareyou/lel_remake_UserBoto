@@ -8,7 +8,6 @@ psutil
 wget
 pyaes
 rsa
-html5lib
 pytest
 pytest-asyncio
 pytest-cov
