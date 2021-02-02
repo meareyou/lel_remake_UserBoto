@@ -148,29 +148,6 @@ async def getResult(event):
     else:
         await event.edit("Loading...")
         m_query = 0
-        tbl_hari = [
-            "senin",
-            "selasa",
-            "rabu",
-            "kamis",
-            "jumat",
-            "sabtu",
-            "minggu"]
-        msg = "Jadwal Rilis Hari "
-        if query == tbl_hari[0]:
-            m_query = 0
-        if query == tbl_hari[1]:
-            m_query = 1
-        if query == tbl_hari[2]:
-            m_query = 2
-        if query == tbl_hari[3]:
-            m_query = 3
-        if query == tbl_hari[4]:
-            m_query = 4
-        if query == tbl_hari[5]:
-            m_query = 5
-        if query == tbl_hari[6]:
-            m_query = 6
         an_data = getData(m_query)["hari"]
         ar_data = getData(m_query)["anime"]
         for an_otr in an_data:
