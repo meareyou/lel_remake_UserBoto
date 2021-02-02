@@ -2,9 +2,9 @@ from userbot import CMD_HELP
 from userbot.events import register
 import requests
 from bs4 import BeautifulSoup as bs
-import textwrap
 
 str_url = "http://nekopoi-index.herokuapp.com/"
+
 
 @register(outgoing=True, pattern=r"^\.kucing ?(.*)")
 async def _(event):
@@ -27,28 +27,35 @@ async def _(event):
                 msg += f"~ <a href='{m_video_url}'>{m_title}</a>\n"
                 await event.edit(msg, parse_mode="html")
 
+
 def search(anime):
     result_anime = []
-    search_url = requests.get(str_url+"?search="+anime)
-    soup_html = bs(search_url.text,"html5lib")
-    soup_body = soup_html.find_all("tr",class_="border-t border-b border-gray-300 my-2 p-4 rounded hover:bg-blue-100")
+    search_url = requests.get(str_url + "?search=" + anime)
+    soup_html = bs(search_url.text, "html5lib")
+    soup_body = soup_html.find_all(
+        "tr",
+        class_="border-t border-b border-gray-300 my-2 p-4 rounded hover:bg-blue-100")
     if soup_body:
         for soup_result in soup_body:
-            result_id = soup_result.find("th",class_="my-2 p-2").get_text(strip=True)
-            result_bool = True if soup_result.find("th",string="True") else False
-            if result_bool == True:
-               result_title = soup_result.find("a").text.strip().split("mp4",40)
-               string_title = "".join(result_title) + ".." 
-               result_anime.append({"title":string_title,"id":result_id})
+            result_id = soup_result.find(
+                "th", class_="my-2 p-2").get_text(strip=True)
+            result_bool = True if soup_result.find(
+                "th", string="True") else False
+            if result_bool:
+                result_title = soup_result.find(
+                    "a").text.strip().split("mp4", 40)
+                string_title = "".join(result_title) + ".."
+                result_anime.append({"title": string_title, "id": result_id})
         return{
-            "result":result_anime,
-            "response":"200"
+            "result": result_anime,
+            "response": "200"
         }
     else:
         return{
-            "result":"Not Found",
-            "response":"404"
+            "result": "Not Found",
+            "response": "404"
         }
+
 
 def get_search_result(query):
     search_res = search(query)
@@ -64,6 +71,7 @@ def get_search_result(query):
             message += f"   **>** `{title}` / **Id**:`{ids}`\n"
         return message
 
+
 @register(outgoing=True, pattern=r"^\.searchpoi ?(.*)")
 async def nekopoi(bot):
     query = bot.pattern_match.group(1)
@@ -72,7 +80,7 @@ async def nekopoi(bot):
     else:
         result = get_search_result(query)
         await bot.edit(result)
-        
+
 
 CMD_HELP.update({
     "nekocare":
