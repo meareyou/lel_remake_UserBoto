@@ -114,6 +114,7 @@ async def _(event):
             reply_to=event,
         )
 
+
 @register(outgoing=True, pattern=r"^\.scrilis ?(.*)")
 async def _(event):
     post = event.pattern_match.group(1).lower()
@@ -124,29 +125,36 @@ async def _(event):
         url = "https://anime.kaedenoki.net/api/schedule"
         jsn = requests.get(url).json()
         m_query = 0
-        tbl_hari = ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
+        tbl_hari = [
+            "senin",
+            "selasa",
+            "rabu",
+            "kamis",
+            "jumat",
+            "sabtu",
+            "minggu"]
         msg = "**Jadwal Rilis Hari** "
-        if post == tbl_hari[0]: 
+        if post == tbl_hari[0]:
             m_query = 0
-        if post == tbl_hari[1]: 
+        if post == tbl_hari[1]:
             m_query = 1
-        if post == tbl_hari[2]: 
+        if post == tbl_hari[2]:
             m_query = 2
-        if post == tbl_hari[3]: 
+        if post == tbl_hari[3]:
             m_query = 3
-        if post == tbl_hari[4]: 
+        if post == tbl_hari[4]:
             m_query = 4
-        if post == tbl_hari[5]: 
+        if post == tbl_hari[5]:
             m_query = 5
-        if post == tbl_hari[6]: 
+        if post == tbl_hari[6]:
             m_query = 6
         json_day = jsn["scheduleList"]
         json_days = json_day[m_query]["day"]
         json_titl = json_day[m_query]["animeList"]
-        msg +=f"`{json_days}`:\n"
+        msg += f"`{json_days}`:\n"
         for json_tt in json_titl:
             json_title = json_tt["anime_name"]
-            msg +=f" ~ `{json_title}`\n"
+            msg += f" ~ `{json_title}`\n"
         msg += f"\n**Note**: `Jadwal bisa berubah sewaktu-waktu`"
         await event.edit(msg)
 
