@@ -7,7 +7,6 @@ import requests
 from userbot import CMD_HELP
 from userbot.events import register
 import requests
-from bs4 import BeautifulSoup as bs
 
 # time formatter from uniborg
 
