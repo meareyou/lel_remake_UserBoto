@@ -115,49 +115,6 @@ async def _(event):
             reply_to=event,
         )
 
-
-def getList():
-    list_ = []
-    html = requests.get("https://otakudesu.tv/jadwal-rilis/")
-    soup = bs(html.text, "html5lib")
-    base = soup.find("div", class_="kgjdwl321")
-    for daftar in base.find_all("div", class_="kglist321"):
-        list_.append(daftar)
-    return {"html": list_}
-
-
-def getData(query):
-    list_hari = []
-    list_anime = []
-    r = getList()["html"]
-    for k, v in enumerate(r[query].find_all("li")):
-        list_anime.append(v.find("a").get_text())
-    for p, o in enumerate(r[query].find_all("h2")):
-        list_hari.append(o.get_text())
-    return {
-        "hari": list_hari,
-        "anime": list_anime
-    }
-
-
-@register(outgoing=True, pattern=r"^\.anirilis ?(.*)")
-async def getResult(event):
-    query = event.pattern_match.group(1).lower()
-    if not query:
-        await event.edit("**Usage**: `.anirilis` <Senin/Selasa>")
-    else:
-        await event.edit("Loading...")
-        m_query = 0
-        an_data = getData(m_query)["hari"]
-        ar_data = getData(m_query)["anime"]
-        for an_otr in an_data:
-            msg += f"**{an_otr}**:\n"
-        for an_ott in ar_data:
-            msg += f" ~ `{an_ott}`\n"
-        msg += f"\n**Note**: `Jadwal bisa berubah sewaktu-waktu`"
-        await event.delete()
-        await event.edit(msg)
-
 # f"FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4"
 CMD_HELP.update({
     "aniairlings":
