@@ -70,6 +70,7 @@ def _api(str_):
 
 """Jadwal rilis anime"""
 
+
 @register(outgoing=True, pattern=r"^.airling ?(.*)")
 async def _(event):
     query = event.pattern_match.group(1)
@@ -114,28 +115,31 @@ async def _(event):
             reply_to=event,
         )
 
+
 def getList():
     list_ = []
     html = requests.get("https://otakudesu.tv/jadwal-rilis/")
-    soup = bs(html.text,"html5lib")
-    base = soup.find("div",class_="kgjdwl321")
-    for daftar in base.find_all("div",class_="kglist321"):
+    soup = bs(html.text, "html5lib")
+    base = soup.find("div", class_="kgjdwl321")
+    for daftar in base.find_all("div", class_="kglist321"):
         list_.append(daftar)
-    return {"html":list_}
+    return {"html": list_}
+
 
 def getData(query):
     list_hari = []
     list_anime = []
     r = getList()["html"]
-    for k,v in enumerate(r[query].find_all("li")):
+    for k, v in enumerate(r[query].find_all("li")):
         list_anime.append(v.find("a").get_text())
-    for p,o in enumerate(r[query].find_all("h2")):
+    for p, o in enumerate(r[query].find_all("h2")):
         list_hari.append(o.get_text())
     return {
-        "hari":list_hari,
-        "anime":list_anime
+        "hari": list_hari,
+        "anime": list_anime
     }
- 
+
+
 @register(outgoing=True, pattern=r"^\.anirilis ?(.*)")
 async def getResult(event):
     query = event.pattern_match.group(1).lower()
