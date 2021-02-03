@@ -74,18 +74,18 @@ async def _(event):
         return
     else:
         rp = get_html(url)["html"]
-        for v,k in enumerate(rp):
-            tag_count.append({"count":v})
-        for k,v in enumerate(tag_count):
+        for v, k in enumerate(rp):
+            tag_count.append({"count": v})
+        for k, v in enumerate(tag_count):
             msg = "Link Download\n\n"
-            p = link_download(1,url)
+            p = link_download(1, url)
             for label_name in p["label"]:
                 msg += f"- {label_name}:\n"
             for server_link in p["url"]:
                 server_name = server_link["server"]
                 server_url = server_link["link"]
                 msg += f"<a href='{server_url}'>{server_name}</a>｜"
-            await event.edit(msg,parse_mode="html")
+            await event.edit(msg, parse_mode="html")
 
 CMD_HELP.update({
     "neonime":
