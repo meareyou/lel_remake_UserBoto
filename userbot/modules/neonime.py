@@ -80,12 +80,13 @@ async def _(event):
             msg = "`Link Download`\n\n"
             p = link_download(k, url)
             for label_name in p["label"]:
-                msg += f"- **{label_name}**:\n"
+                msg = f"- **{label_name}**:\n"
             for server_link in p["url"]:
                 server_name = server_link["server"]
                 server_url = server_link["link"]
-                msg += f"<a href='{server_url}'>{server_name}</a>｜"
-                await event.edit(msg, parse_mode="html")
+                msg = f"<a href='{server_url}'>{server_name}</a>｜"
+            await event.edit(msg, parse_mode="html")
+
 
 CMD_HELP.update({"neonime": "**Neonime**"
                  "\n >`.neonime`"
