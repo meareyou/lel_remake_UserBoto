@@ -29,40 +29,43 @@ async def _neonime(event):
                 break
             await event.edit(out, parse_mode="html")
 
+
 def get_html(url):
     tag_li = []
     req = requests.get(url)
-    res = bs(req.text,"html5lib")
-    box = res.find("div",class_="sbox").parent.find_all("li")
+    res = bs(req.text, "html5lib")
+    box = res.find("div", class_="sbox").parent.find_all("li")
     if len(box) != 0:
        for clear in box:
            if clear.get_text() == 'MP4':
                box.remove(clear)
            elif clear.get_text() == 'MKV':
                box.remove(clear)
-           else:pass
+           else: pass
     for box_ in box:
         tag_li.append(box_)
     return {
-        "html":tag_li
+        "html": tag_li
     }
-    
-def link_download(query,url):
+
+
+def link_download(query, url):
     tag_label = []
     tag_href = []
     r = get_html(url)["html"]
-    for k,v in enumerate(r[query].find_all("a")):
-        tag_href.append({"server":v.get_text(strip=True),"link":v["href"]})
-    for p,o in enumerate(r[query].find_all("label")):
+    for k, v in enumerate(r[query].find_all("a")):
+        tag_href.append({"server": v.get_text(strip=True), "link": v["href"]})
+    for p, o in enumerate(r[query].find_all("label")):
         tag_label.append(o.get_text())
     return {
-        "label":tag_label,
-        "url":tag_href
+        "label": tag_label,
+        "url": tag_href
     }
-  
+
+
 @register(outgoing=True, pattern=r"^\.neolink ?(.*)")
 async def _(event):
-    #tag_count = []    
+    # tag_count = []
     url = event.pattern_match.group(1)
     if not uri:
         await event.edit("Masukan url episode, liat .help neonime")
@@ -71,7 +74,7 @@ async def _(event):
         return
     else:
         msg = "Link Download\n\n"
-        p = link_download(1,url)
+        p = link_download(1, url)
         for label_name in p["label"]:
             msg += f"- {label_name}:\n"
         for server_link in p["url"]:
