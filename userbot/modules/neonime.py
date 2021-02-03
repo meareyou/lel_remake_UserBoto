@@ -67,7 +67,7 @@ def link_download(query, url):
 async def _(event):
     # tag_count = []
     url = event.pattern_match.group(1)
-    if not uri:
+    if not url:
         await event.edit("Masukan url episode, liat .help neonime")
     elif 'https://' not in url:
         await event.edit('Masukan url')
