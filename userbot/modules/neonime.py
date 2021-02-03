@@ -87,9 +87,9 @@ async def _(event):
                 msg += f"<a href='{server_url}'>{server_name}</a>｜"
                 await event.edit(msg, parse_mode="html")
 
-CMD_HELP.update({"neonime": 
-    ">`.neonime`"
-    "\nUsage: Liat anime baru rilis di neonime.",
-    ">`.neolink` <url episode>"
-    "\nUsage: Cari link download, Copy url episode dari `.neonime` "
-})
+CMD_HELP.update({"neonime":
+                 ">`.neonime`"
+                 "\nUsage: Liat anime baru rilis di neonime.",
+                 ">`.neolink` <url episode>"
+                 "\nUsage: Cari link download, Copy url episode dari `.neonime` "
+                 })
