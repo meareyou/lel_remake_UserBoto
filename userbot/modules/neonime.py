@@ -1,11 +1,16 @@
+"""
+	Scrape neonime.vip
+	Feature 
+           Show new update anime
+           Scrape link download
+	By : lel_remake_UserBoto
+"""
+
 import requests
 from bs4 import BeautifulSoup as bs
 import re
 from userbot import CMD_HELP
 from userbot.events import register
-
-# berantakan
-
 
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
 async def _neonime(event):
@@ -28,7 +33,6 @@ async def _neonime(event):
                 break
             await event.edit(out, parse_mode="html")
 
-
 def get_html(url):
     tag_li = []
     req = requests.get(url)
@@ -48,7 +52,6 @@ def get_html(url):
         "html": tag_li
     }
 
-
 def link_download(query, url):
     tag_label = []
     tag_href = []
@@ -61,7 +64,6 @@ def link_download(query, url):
         "label": tag_label,
         "url": tag_href
     }
-
 
 @register(outgoing=True, pattern=r"^\.neolink ?(.*)")
 async def _(event):
