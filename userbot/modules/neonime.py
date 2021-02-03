@@ -65,7 +65,7 @@ def link_download(query, url):
 
 @register(outgoing=True, pattern=r"^\.neolink ?(.*)")
 async def _(event):
-    # tag_count = []
+    tag_count = []
     url = event.pattern_match.group(1)
     if not url:
         await event.edit("Masukan url episode, liat .help neonime")
@@ -73,15 +73,19 @@ async def _(event):
         await event.edit('Masukan url')
         return
     else:
-        msg = "Link Download\n\n"
-        p = link_download(1, url)
-        for label_name in p["label"]:
-            msg += f"- {label_name}:\n"
-        for server_link in p["url"]:
-            server_name = server_link["server"]
-            server_url = server_link["link"]
-            msg += f"<a href='{server_url}'>{server_name}</a>｜"
-        await event.edit(msg, parse_mode="html")
+        rp = get_html(url)["html"]
+        for v,k in enumerate(rp):
+            tag_count.append({"count":v})
+        for k,v in enumerate(tag_count):
+            msg = "Link Download\n\n"
+            p = link_download(1,url)
+            for label_name in p["label"]:
+                msg += f"- {label_name}:\n"
+            for server_link in p["url"]:
+                server_name = server_link["server"]
+                server_url = server_link["link"]
+                msg += f"<a href='{server_url}'>{server_name}</a>｜"
+            await event.edit(msg,parse_mode="html")
 
 CMD_HELP.update({
     "neonime":
