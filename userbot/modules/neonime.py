@@ -88,7 +88,7 @@ async def _(event):
                 await event.edit(msg, parse_mode="html")
 
 CMD_HELP.update({"neonime": "**Neonime**"
-                 "\n>`.neonime`"
-                 "\nUsage: Liat anime baru rilis di neonime."
-                 "\n>`.neolink` <url episode>"
-                 "\nUsage: Cari link download, Copy url episode dari `.neonime` "})
+                 "\n >`.neonime`"
+                 "\n  Usage: Liat anime baru rilis di neonime."
+                 "\n >`.neolink` <`url episode`>"
+                 "\n  Usage: Cari link download, Copy url episode dari `.neonime` "})
