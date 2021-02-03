@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import re
-import time
 from userbot import CMD_HELP
 from userbot.events import register
 
@@ -36,12 +35,13 @@ def get_html(url):
     res = bs(req.text, "html5lib")
     box = res.find("div", class_="sbox").parent.find_all("li")
     if len(box) != 0:
-       for clear in box:
-           if clear.get_text() == 'MP4':
-               box.remove(clear)
-           elif clear.get_text() == 'MKV':
-               box.remove(clear)
-           else: pass
+        for clear in box:
+            if clear.get_text() == 'MP4':
+                box.remove(clear)
+            elif clear.get_text() == 'MKV':
+                box.remove(clear)
+            else:
+                pass
     for box_ in box:
         tag_li.append(box_)
     return {
@@ -81,7 +81,7 @@ async def _(event):
             server_name = server_link["server"]
             server_url = server_link["link"]
             msg += f"<a href='{server_name}'>{server_url}</a>｜"
-        await event.edit(msg,parse_mode="html")
+        await event.edit(msg, parse_mode="html")
 
 CMD_HELP.update({
     "neonime":
