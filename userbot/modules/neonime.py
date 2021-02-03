@@ -78,7 +78,7 @@ async def _(event):
             tag_count.append({"count": v})
         for k, v in enumerate(tag_count):
             msg = "Link Download\n\n"
-            p = link_download(1, url)
+            p = link_download(k, url)
             for label_name in p["label"]:
                 msg += f"- {label_name}:\n"
             for server_link in p["url"]:
