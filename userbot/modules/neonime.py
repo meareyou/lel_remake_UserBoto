@@ -48,7 +48,6 @@ def get_html(url):
         "html": tag_li
     }
 
-
 def link_download(query, url):
     tag_label = []
     tag_href = []
@@ -61,7 +60,6 @@ def link_download(query, url):
         "label": tag_label,
         "url": tag_href
     }
-
 
 @register(outgoing=True, pattern=r"^\.neolink ?(.*)")
 async def _(event):
@@ -80,7 +78,7 @@ async def _(event):
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
-            msg += f"<a href='{server_name}'>{server_url}</a>｜"
+            msg += f"<a href='{server_url}'>{server_name}</a>｜"
         await event.edit(msg, parse_mode="html")
 
 CMD_HELP.update({
