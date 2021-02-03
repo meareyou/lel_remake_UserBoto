@@ -1,6 +1,6 @@
 """
 	Shows anime airing time in anilist
-	Usage : .airling anime name
+	Usage : .airing anime name
 	By : lel_remake_UserBoto
 """
 import requests
@@ -9,7 +9,6 @@ from userbot.events import register
 import requests
 
 # time formatter from uniborg
-
 
 def time_(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
@@ -70,11 +69,11 @@ def _api(str_):
 """Jadwal rilis anime"""
 
 
-@register(outgoing=True, pattern=r"^.airling ?(.*)")
+@register(outgoing=True, pattern=r"^.airing ?(.*)")
 async def _(event):
     query = event.pattern_match.group(1)
     if not query:
-        await event.edit("Usage: .airling <Anime Name>")
+        await event.edit("Usage: .airing <Anime Name>")
         return
     result = _api(query)
     error = result.get('errors')
@@ -115,11 +114,11 @@ async def _(event):
         )
 
 
-@register(outgoing=True, pattern=r"^\.scrilis ?(.*)")
+@register(outgoing=True, pattern=r"^\.jadwalrilis ?(.*)")
 async def _(event):
     post = event.pattern_match.group(1).lower()
     if not post:
-        await event.edit("**Usage**: `.scrilis` <Senin/Selasa>")
+        await event.edit("**Usage**: `.jadwalrilis` <Senin/Selasa>")
     else:
         await event.edit("`Loading..`")
         url = "https://anime.kaedenoki.net/api/schedule"
@@ -133,7 +132,7 @@ async def _(event):
             "jumat",
             "sabtu",
             "minggu"]
-        msg = "**Jadwal Rilis Hari** "
+        msg = "Jadwal Rilis Hari: "
         if post == tbl_hari[0]:
             m_query = 0
         if post == tbl_hari[1]:
@@ -151,7 +150,7 @@ async def _(event):
         json_day = jsn["scheduleList"]
         json_days = json_day[m_query]["day"]
         json_titl = json_day[m_query]["animeList"]
-        msg += f"`{json_days}`:\n"
+        msg += f"**{json_days}**\n"
         for json_tt in json_titl:
             json_title = json_tt["anime_name"]
             msg += f" ~ `{json_title}`\n"
@@ -161,7 +160,10 @@ async def _(event):
 
 # f"FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4"
 CMD_HELP.update({
-    "aniairlings":
-    "`.airlings` <Anime name>\
-    \n**Usage**: `shows anime airing`"
+    "ani_airing":
+    "ani_airing"
+    "\n > `.airing` <`anime name`>"
+    "\n  **Usage**: `liat anime waktu rilis`"
+    "\n > `.jadwalrilis` <`senin/selasa`>"
+    "\n  **Usage**: `liat jadwal rilis anime`"
 })
