@@ -6,6 +6,7 @@ from userbot.events import register
 
 # berantakan
 
+
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
