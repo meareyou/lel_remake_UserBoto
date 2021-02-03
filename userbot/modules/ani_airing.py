@@ -10,6 +10,7 @@ import requests
 
 # time formatter from uniborg
 
+
 def time_(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
