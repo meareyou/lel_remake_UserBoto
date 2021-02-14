@@ -14,11 +14,11 @@
   "success_url": "@Crypto08_bot",
   "stack": "container",
   "env": {
-    "API_KEY": {
+    "API_HASH": {
       "description": "Get this value from my.telegram.org.",
       "required": true
     },
-    "API_HASH": {
+    "API_KEY": {
       "description": "Get this value from my.telegram.org.",
       "required": true
     },
