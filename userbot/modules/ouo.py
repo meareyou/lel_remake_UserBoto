@@ -5,7 +5,10 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-import  @register(outgoing=True, pattern=r"^\.ouo ?(.*)")
+import @ register(outgoing=True
+                  import pattern=r"^\.ouo ?(.*)")
+
+
 async def _(event):
     url = event.pattern_match.group(1)
     if not url:
@@ -15,14 +18,14 @@ async def _(event):
     elif 'https://' not in url:
         await event.edit('Masukan url OuO')
         return
-    else:# f"FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4"
-         uro = 'https://akasakaidn.herokuapp.com/ouo/?url='
-         p = requests.get(uro+url)
-         jsno = p.json()
-         json_result = jsno["result"]
-         msg += f"`json_result`\n"
-         msg += f"Congrats"
-           await.event.edit(msg)
+    else:  # f"FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4"
+        uro = 'https://akasakaidn.herokuapp.com/ouo/?url='
+        p = requests.get(uro + url)
+        jsno = p.json()
+        json_result = jsno["result"]
+        msg += f"`json_result`\n"
+        msg += f"Congrats"
+        await.event.edit(msg)
 
 
 CMD_HELP.update({
