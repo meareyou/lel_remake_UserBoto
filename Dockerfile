@@ -1,6 +1,5 @@
 # We're using Ubuntu 20.10
-FROM movecrew/one4ubot:alpine-latest
-#Credit One4UBot
+FROM xnewbie/remix:groovy
 
 #
 # Clone repo and prepare working directory
