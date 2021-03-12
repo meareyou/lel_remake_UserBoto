@@ -1,5 +1,6 @@
 # We're using Ubuntu 20.10
-FROM xnewbie/docker:groovy
+FROM movecrew/one4ubot:alpine-latest
+#Credit One4UBot
 
 #
 # Clone repo and prepare working directory
