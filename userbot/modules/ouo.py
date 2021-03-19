@@ -6,8 +6,6 @@ from userbot.events import register
 
 
 @register(outgoing=True, pattern=r"^\.ouo ?(.*)")
-
-
 async def _(event):
     url = event.pattern_match.group(1)
     if not url:
