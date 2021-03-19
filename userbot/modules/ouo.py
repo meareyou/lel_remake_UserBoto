@@ -5,8 +5,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-import @ register(outgoing=True
-                  import pattern=r"^\.ouo ?(.*)")
+@register(outgoing=True, pattern=r"^\.ouo ?(.*)")
 
 
 async def _(event):
