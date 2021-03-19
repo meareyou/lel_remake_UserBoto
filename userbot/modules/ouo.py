@@ -20,9 +20,9 @@ async def _(event):
         p = requests.get(uro + url)
         jsno = p.json()
         json_result = jsno["result"]
-        msg += f"`json_result`\n"
-        msg += f"Congrats"
-        await.event.edit(msg)
+        msg2 += f"`json_result`\n"
+        msg1 += f"Congrats\n"
+        await.event.edit(msg1+msg2)
 
 
 CMD_HELP.update({
