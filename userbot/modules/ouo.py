@@ -22,7 +22,7 @@ async def _(event):
         json_result = jsno["result"]
         msg2 += f"`json_result`\n"
         msg1 += f"Congrats\n"
-        await.event.edit(msg1+msg2)
+        await.event.edit(msg1 + msg2)
 
 
 CMD_HELP.update({
