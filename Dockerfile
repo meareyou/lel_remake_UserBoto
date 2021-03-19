@@ -1,5 +1,6 @@
 # We're using Ubuntu 20.10
-FROM xnewbie/remix:groovy
+FROM aarunalr/openubot:userbot
+#credit openubot
 
 #
 # Clone repo and prepare working directory
