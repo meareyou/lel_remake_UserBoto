@@ -25,4 +25,3 @@ CMD_HELP.update({
                  "ouo":
                  "\n >`.ouo links`"
                  "\n  Usage: bypass __ouo.io__."
-
