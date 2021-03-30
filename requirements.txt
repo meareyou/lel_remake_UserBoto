@@ -1,5 +1,5 @@
 wheel
-urllib
+urllib3
 aiohttp
 aiofiles
 aria2p
