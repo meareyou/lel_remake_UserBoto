@@ -24,9 +24,5 @@ print('Link : ' + "(Duar)[" + obj['result'] + "]")
 CMD_HELP.update({
                  "ouo":
                  "\n >`.ouo links`"
-                 "\n  Usage: bypass __ouo.io__."
-
-
-
-                # t.me/crypto08
-                 # special thanks @akasakaid
+                 "\n  Usage: bypass __ouo.io__"
+#t.me/crypto08#special thanks @akasakaid
