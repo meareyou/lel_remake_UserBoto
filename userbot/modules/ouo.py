@@ -10,7 +10,7 @@ from userbot.events import register
 async def _(event):  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
     uro = event.pattern_match.group(1)
     if not url:
-        await event.edit("Lah yg mau di bypass mana"")
+        await event.edit("Lah yg mau di bypass mana")
     elif 'https://' not in url:
         await event.edit('Masukan url')
         return
