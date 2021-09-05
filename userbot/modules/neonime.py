@@ -16,7 +16,7 @@ from userbot.events import register
 @register(outgoing=True, pattern=r"^\.neonime ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
-    url = 'https://neonime.vip/episode/'
+    url = 'https://neonime.live/episode/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('td', class_='bb')
